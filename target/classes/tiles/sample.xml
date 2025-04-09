@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+   <definition name="baseLayout" template="/WEB-INF/views/layout.jsp">
+      <put-attribute name="title" value=""/>
+      <put-attribute name="top" value="/WEB-INF/views/top.jsp"/>
+      <put-attribute name="body" value=""/>
+      <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+   </definition>
+   <!-- 메인화면 -->
+   <definition name="main" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/main.jsp"/>
+   </definition>
+   <!-- 회원가입 -->
+   <definition name="userinput" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/userinput.jsp"/>
+   </definition>
+   <!-- 회원정보 조회 -->
+     <definition name="userout" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/userout.jsp"/>
+   </definition>
+   <!-- 로그인 창 -->
+   <definition name="login" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/Login/login.jsp"/>
+   </definition>
+   <!-- 상품등록 -->
+   <definition name="productinput" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/product/productinput.jsp"/>
+   </definition>
+   <!-- 상품 조회 -->
+   <definition name="produout" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/product/productout.jsp"/>
+   </definition>
+   <!-- 상품 상세조회 -->
+   <definition name="produdetail" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/product/productdetail.jsp"/>
+   </definition>
+   <!-- 상품정보 삭제 -->
+   <definition name="pmodify1" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/product/pmodify1.jsp"/>
+   </definition>
+   <!-- 상품정보 수정 -->
+   <definition name="pdelete1" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/product/pdelete1.jsp"/>
+   </definition>  
+   <!-- 게시물 등록 -->
+   <definition name="postinput" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/post/postinput.jsp"/>
+   </definition>   
+   <!-- 게시물 출력 -->
+   <definition name="postout" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/post/postout.jsp"/>
+   </definition>   
+   <!-- 나만의 노하우 등록 -->
+   <definition name="howinput" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/how/howinput.jsp"/>
+   </definition>
+	<!-- 나만의 노하우 출력 -->   
+      <definition name="howout" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/how/howout.jsp"/>
+   </definition>
+   <!-- 나만의 노하우 게시물 -->
+   <definition name="howdetail" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/how/howdetail.jsp"/>
+   </definition>
+   <!-- 나만의 노하우 댓글 -->
+    <definition name="howredetail" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/how/howredetail.jsp"/>
+   </definition>
+   
+
+   
+</tiles-definitions>

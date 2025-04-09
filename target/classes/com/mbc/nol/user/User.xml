@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mbc.nol.user.UserService">
+<select id="idcount" resultType="int">
+select count(*) from "User" where id=#{param1}
+</select>
+
+<insert id="insertq">
+insert into "User" values(#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7})
+</insert>
+
+<select id="allout" resultType="com.mbc.nol.user.UserDTO">
+select*from "User"
+</select>
+
+</mapper>
+
+
+
+
