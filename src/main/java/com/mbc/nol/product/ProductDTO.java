@@ -6,11 +6,12 @@ public class ProductDTO {
 	int productnum;
 	String id;
 	String animal;
-	String productlist;
+	String productlist;	
 	int price;
 	String productimg;
-	String productcnt;
+	int productcnt;
     Date productdate;
+    String productname;
 	public ProductDTO() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -51,10 +52,10 @@ public class ProductDTO {
 	public void setProductimg(String productimg) {
 		this.productimg = productimg;
 	}
-	public String getProductcnt() {
+	public int getProductcnt() {
 		return productcnt;
 	}
-	public void setProductcnt(String productcnt) {
+	public void setProductcnt(int productcnt) {
 		this.productcnt = productcnt;
 	}
 	public Date getProductdate() {
@@ -63,5 +64,15 @@ public class ProductDTO {
 	public void setProductdate(Date productdate) {
 		this.productdate = productdate;
 	}
+	public String getProductname() {
+		return productname;
+	}
+	public void setProductname(String productname) {
+		this.productname = productname;
+	}
+
+	
+	
+	
     
 }
