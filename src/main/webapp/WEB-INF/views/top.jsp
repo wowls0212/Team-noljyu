@@ -59,7 +59,6 @@ font-style: italic;
         <ul class="dropdown-menu" >
           <li><a href="postinput"><span>게시물 등록</span></a></li>
           <li><a href="postout">게시물 조회</a></li>
-          <li><a href="postsearch">게시물 검색</a></li>
         </ul>
       </li>
       
@@ -67,7 +66,7 @@ font-style: italic;
         <ul class="nav navbar-nav navbar-right">
         <c:choose>
         <c:when test="${loginstate==true }">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span>마이페이지</a></li>
+        <li><a href="mypage"><span class="glyphicon glyphicon-user"></span>${id }마이페이지</a></li>
       <li><a href="logout"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a></li>
         </c:when>
         <c:otherwise>

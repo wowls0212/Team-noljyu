@@ -6,7 +6,7 @@
 <mapper namespace="com.mbc.nol.flea.FleaService">
 
 	<insert id="fleainsert">
-		insert into "flea" values(fleanum_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}, 0, sysdate)
+		insert into "flea" values(flea_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}, 0, sysdate)
 	</insert>
 	
 	<select id="fleaout" resultType="com.mbc.nol.flea.FleaDTO">
@@ -21,20 +21,51 @@
 		insert into "fleareview" values(#{param1}, #{param2}, #{param3}, fleareviewnum_seq.nextval, fleareviewnum_seq.currval, 0, 0)
 	</insert>
 
-	<select id="howreviewout" resultType="com.mbc.nol.flea.FleaDTO">
-		select * from "fleareview" where fleanum=#{param1}
+	<select id="fleareviewout" resultType="com.mbc.nol.flea.FleaDTO">
+		select * from "fleareview" where "fleanum"=#{param1}
 	</select>
 	
-	<select id="howrere" resultType="com.mbc.nol.flea.FleaDTO">
-		select * from "fleareview" where fleareviewnum=#{param1}
+	<select id="flearere" resultType="com.mbc.nol.flea.FleaDTO">
+		select * from "fleareview" where "fleareviewnum"=#{param1}
 	</select>
 	
-	<update id="howstepup">
-		update "fleareview" set fleastep=fleastep+1 where fleagroups=#{param1} and fleastep>#{param2}
+	<update id="fleastepup">
+		update "fleareview" set "fleastep"="fleastep"+1 where "fleagroups"=#{param1} and "fleastep">#{param2}
 	</update>
 	
-	<insert id="howreinsert">
+	<insert id="fleareinsert">
 		insert into "fleareview" values(#{param1}, #{param2}, #{param3}, fleareviewnum_seq.nextval, #{param4}, #{param5}, #{param6})
 	</insert>
+	
+	<select id="fleaupdateout" resultType="com.mbc.nol.flea.FleaDTO">
+		select * from "flea" where "fleanum"=#{param1}
+	</select>
+	
+	<update id="fleaupdate">
+		update "flea" set "fleatitle"=#{param2}, "fleadetail"=#{param3} where "fleanum"=#{param1}
+	</update>
+	
+	<update id="fleaupdateimg">
+		update "flea" set "fleatitle"=#{param2}, "fleadetail"=#{param3}, "fleaimg"=#{param4} where "fleanum"=#{param1}
+	</update>
+	
+	<delete id="fleadelete">
+		delete from "flea" where "fleanum"=#{param1}
+	</delete>
+	
+	<select id="fleadeletecheck" resultType="int">
+		select count(*) from "flea" where "fleanum"=#{param1}
+	</select>
+	
+	<select id="fleasearch" resultType="com.mbc.nol.flea.FleaDTO">
+		select * from "flea" where "${param1}" like '%' || #{param2} || '%'
+	</select>
+	
+	<select id="fleasearchall" resultType="com.mbc.nol.flea.FleaDTO">
+		select * from "flea" 
+		where "id" like '%' || #{param1} || '%'
+		   or "fleatitle" like '%' || #{param1} || '%'
+		   or "fleadetail" like '%' || #{param1} || '%'
+	</select>
 	
 </mapper>

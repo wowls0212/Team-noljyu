@@ -14,6 +14,8 @@
       <put-attribute name="title" value="메인화면"/>
       <put-attribute name="body" value="/WEB-INF/views/main.jsp"/>
    </definition>
+   
+   
    <!-- 회원가입 -->
    <definition name="userinput" extends="baseLayout">
       <put-attribute name="title" value="메인화면"/>
@@ -27,15 +29,21 @@
    <!-- 로그인 창 -->
    <definition name="login" extends="baseLayout">
       <put-attribute name="title" value="메인화면"/>
-      <put-attribute name="body" value="/WEB-INF/views/Login/login.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/login/login.jsp"/>
    </definition>
+   <!-- 마이페이지 -->
+   <definition name="mypageout" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/mypageout.jsp"/>
+   </definition>
+   
    <!-- 상품등록 -->
    <definition name="productinput" extends="baseLayout">
       <put-attribute name="title" value="메인화면"/>
       <put-attribute name="body" value="/WEB-INF/views/product/productinput.jsp"/>
    </definition>
    <!-- 상품 조회 -->
-   <definition name="produout" extends="baseLayout">
+   <definition name="productout" extends="baseLayout">
       <put-attribute name="title" value="메인화면"/>
       <put-attribute name="body" value="/WEB-INF/views/product/productout.jsp"/>
    </definition>
@@ -54,6 +62,8 @@
       <put-attribute name="title" value="메인화면"/>
       <put-attribute name="body" value="/WEB-INF/views/product/pdelete1.jsp"/>
    </definition>  
+   
+   
    <!-- 게시물 등록 -->
    <definition name="postinput" extends="baseLayout">
       <put-attribute name="title" value="메인화면"/>
@@ -64,6 +74,8 @@
       <put-attribute name="title" value="메인화면"/>
       <put-attribute name="body" value="/WEB-INF/views/post/postout.jsp"/>
    </definition>   
+   
+   
    <!-- 나만의 노하우 등록 -->
    <definition name="howinput" extends="baseLayout">
       <put-attribute name="title" value="메인화면"/>
@@ -84,7 +96,81 @@
       <put-attribute name="title" value="메인화면"/>
       <put-attribute name="body" value="/WEB-INF/views/how/howredetail.jsp"/>
    </definition>
+   <!-- 나만의 노하우 수정 -->
+   <definition name="howupdate" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/how/howupdate.jsp"/>
+   </definition>
+   <!-- 나만의 노하우 검색 -->
+   <definition name="howsearch" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/how/howsearch.jsp"/>
+   </definition>
    
+   <!-- 플리마켓 등록 -->
+   <definition name="fleainput" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/flea/fleainput.jsp"/>
+   </definition>
+	<!-- 플리마켓 출력 -->   
+      <definition name="fleaout" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/flea/fleaout.jsp"/>
+   </definition>
+   <!-- 플리마켓 게시물 -->
+   <definition name="fleadetail" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/flea/fleadetail.jsp"/>
+   </definition>
+   <!-- 플리마켓 댓글 -->
+    <definition name="flearedetail" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/flea/flearedetail.jsp"/>
+   </definition>
+   <!-- 플리마켓 수정 -->  
+   <definition name="fleaupdate" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/flea/fleaupdate.jsp"/>
+   </definition>
+   <!-- 플리마켓 검색 -->
+   <definition name="fleasearch" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/flea/fleasearch.jsp"/>
+   </definition>
+   
+   
+   <!-- 커뮤니티 등록 -->
+   <definition name="cominput" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/community/cominput.jsp"/>
+   </definition>    
+   <!-- 커뮤니티 조회 -->
+   <definition name="comout" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/community/comout.jsp"/>
+   </definition>
+   
+   <!-- 커뮤니티 게시물 상세보기 -->
+   <definition name="comdetail" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/community/comdetail.jsp"/>
+   </definition>
+   
+   <!-- 커뮤니티 게시물 댓글 -->
+   <definition name="comredetail" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/community/comredetail.jsp"/>
+   </definition>  
+   <!-- 커뮤니티 수정 -->
+   <definition name="comupdate" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/community/comupdate.jsp"/>
+   </definition>  
+   <!-- 커뮤니티 검색 -->
+   <definition name="comsearch" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/community/comsearch.jsp"/>
+   </definition>  
 
    
 </tiles-definitions>

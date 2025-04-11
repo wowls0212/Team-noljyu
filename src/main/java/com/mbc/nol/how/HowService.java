@@ -20,4 +20,18 @@ public interface HowService {
 
 	void howreinsert(int hownum, String id, String review, int groups, int step, int indent);
 
+	HowDTO howupdateout(int hownum);
+
+	void howupdate(int hownum, String howtitle, String howdetail);
+
+	void howupdateimg(int hownum, String howtitle, String howdetail, String howimg);
+
+	void howdelete(int hownum);
+
+	int howdeletecheck(int hownum);
+
+	ArrayList<HowDTO> howsearch(String howkey, String howvalue);
+
+	ArrayList<HowDTO> howsearchall(String howvalue);
+
 }

@@ -15,27 +15,58 @@
 	</select>
 	
 	<select id="howdetailout" resultType="com.mbc.nol.how.HowDTO">
-		select * from "knowhow" where "hownum"=#{param1}
+		select * from "knowhow" where "hownum"=#{param1} 
 	</select>
 	
 	<insert id="howreview">
-		insert into "knowhowreview" values(#{param1}, #{param2}, #{param3}, reviewnum_seq.nextval, reviewnum_seq.currval, 0, 0)
+		insert into "knowhowreview" values(#{param1}, #{param2}, reviewnum_seq.nextval, #{param3}, reviewnum_seq.currval, 0, 0)
 	</insert>
 
 	<select id="howreviewout" resultType="com.mbc.nol.how.HowReviewDTO">
-		select * from "knowhowreview" where hownum=#{param1}
+		select * from "knowhowreview" where "hownum"=#{param1} order by "groups" desc, "step" asc
 	</select>
 	
 	<select id="howrere" resultType="com.mbc.nol.how.HowReviewDTO">
-		select * from "knowhowreview" where reviewnum=#{param1}
+		select * from "knowhowreview" where "reviewnum"=#{param1}
 	</select>
 	
 	<update id="howstepup">
-		update "knowhowreview" set step=step+1 where groups=#{param1} and step>#{param2}
+		update "knowhowreview" set "step"="step"+1 where "groups"=#{param1} and "step">#{param2}
 	</update>
 	
 	<insert id="howreinsert">
-		insert into "knowhowreview" values(#{param1}, #{param2}, #{param3}, reviewnum_seq.nextval, #{param4}, #{param5}, #{param6})
+		insert into "knowhowreview" values(#{param1}, #{param2}, reviewnum_seq.nextval, #{param3}, #{param4}, #{param5}, #{param6})
 	</insert>
+	
+	<select id="howupdateout" resultType="com.mbc.nol.how.HowDTO">
+		select * from "knowhow" where "hownum"=#{param1}
+	</select>
+	
+	<update id="howupdate">
+		update "knowhow" set "howtitle"=#{param2}, "howdetail"=#{param3} where "hownum"=#{param1}
+	</update>
+	
+	<update id="howupdateimg">
+		update "knowhow" set "howtitle"=#{param2}, "howdetail"=#{param3}, "howimg"=#{param4} where "hownum"=#{param1}
+	</update>
+	
+	<delete id="howdelete">
+		delete from "knowhow" where "hownum"=#{param1}
+	</delete>
+	
+	<select id="howdeletecheck" resultType="int">
+		select count(*) from "knowhow" where "hownum"=#{param1}
+	</select>
+	
+	<select id="howsearch" resultType="com.mbc.nol.how.HowDTO">
+		select * from "knowhow" where "${param1}" like '%' || #{param2} || '%'
+	</select>
+	
+	<select id="howsearchall" resultType="com.mbc.nol.how.HowDTO">
+		select * from "knowhow" 
+		where "id" like '%' || #{param1} || '%'
+		   or "howtitle" like '%' || #{param1} || '%'
+		   or "howdetail" like '%' || #{param1} || '%'
+	</select>
 	
 </mapper>

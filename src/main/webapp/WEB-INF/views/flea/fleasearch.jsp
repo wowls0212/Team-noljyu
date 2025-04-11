@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,16 +9,17 @@
 </head>
 <body>
 <table border="1" width="800px" align="center">
+	<caption>"${fleavalue}" 검색결과입니다</caption>
 	<tr>
 		<th>글번호</th><th>ID</th><th>제목</th><th>조회수</th>
 	</tr>
 	
-	<c:forEach items="${list}" var="h">
+	<c:forEach items="${list}" var="f">
 	<tr>
-		<td>${h.fleanum}</td>
-		<td>${h.id}</td>
-		<td><a href="fleadetail?fleanum=${h.fleanum }">${h.fleatitle}</a></td>
-		<td>${h.fleacnt}</td>
+		<td>${f.fleanum}</td>
+		<td>${f.id}</td>
+		<td><a href="fleadetail?fleanum=${f.fleanum }">${f.fleatitle}</a></td>
+		<td>${f.fleacnt}</td>
 	</tr>
 	</c:forEach>
 </table>

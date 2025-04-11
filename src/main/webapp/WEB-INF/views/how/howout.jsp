@@ -22,5 +22,22 @@
 	</tr>
 	</c:forEach>
 </table>
+
+<form action="howsearch" method="post">
+<table border="1" width="500px" align="center">
+	<tr>
+		<th><select name="howkey">
+			<option value="all">전체</option>
+			<option value="howtitle">제목</option>
+			<option value="howdetail">내용</option>
+			<option value="id">작성자</option>
+		</select>
+		
+		</th>
+		<td><input class="value" type="text" name="howvalue"></td>
+		<td><input class="submit" type="submit" value="submit"></td>
+	</tr>
+</table>
+</form>
 </body>
 </html>

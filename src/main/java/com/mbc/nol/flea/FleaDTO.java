@@ -3,7 +3,7 @@ package com.mbc.nol.flea;
 import java.sql.Date;
 
 public class FleaDTO {
-	int fleawnum;
+	int fleanum;
 	String id,fleatitle,fleadetail,fleaimg;
 	int fleacnt;
 	Date fleadate;
@@ -11,11 +11,11 @@ public class FleaDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public int getFleawnum() {
-		return fleawnum;
+	public int getFleanum() {
+		return fleanum;
 	}
-	public void setFleawnum(int fleawnum) {
-		this.fleawnum = fleawnum;
+	public void setFleanum(int fleanum) {
+		this.fleanum = fleanum;
 	}
 	public String getId() {
 		return id;

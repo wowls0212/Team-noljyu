@@ -9,6 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href="dogproduct">개</a>
+<a href="catproduct">고양이</a>
+<a href="birdproduct">새</a>
+<a href="fishproduct">물고기</a>
+<a href="creepingproduct">파충류</a>
 <table border="3" width="1000px" align="center">
 <caption>상품자료출력</caption>
 	<tr>

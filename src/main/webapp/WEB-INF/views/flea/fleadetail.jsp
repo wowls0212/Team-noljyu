@@ -4,17 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-    $("#howdelete").click(function() {
-        var hownum = $("#hownum").val();
+    $("#fleadelete").click(function() {
+        var fleanum = $("#fleanum").val();
         var value = confirm("정말로 삭제하시겠습니까?");
         if (value == true) {
             $.ajax({
                 type: "POST",
-                url: "howdelete",
-                data: { "hownum": hownum },
+                url: "fleadelete",
+                data: { "fleanum": fleanum },
                 async: true,
                 success: function(bigo) {
                     if (bigo == "success") { 
@@ -35,12 +36,14 @@ $(document).ready(function() {
 
 
 </script>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<input type="hidden" name="hownum" value="${dto.hownum}" id="hownum">
+<input type="hidden" name="fleanum" value="${dto.fleanum }" id="fleanum">
 <table border="1" width="800px" align="center">
+	
 	<tr>
 		<th>아이디</th>
 		<td>${dto.id}</td>
@@ -48,28 +51,27 @@ $(document).ready(function() {
 	
 	<tr>
 		<th>제목</th>
-		<td>${dto.howtitle}</td>
+		<td>${dto.fleatitle}</td>
 	</tr>
 	
 	<tr>
 		<th>내용</th>
-		<td>${dto.howdetail}</td>
+		<td>${dto.fleadetail}</td>
 	</tr>
 	
 	<tr>
 		<th>이미지</th>
-		<td><img alt="" src="./image/${dto.howimg}"></td>
+		<td><img alt="" src="./image/${dto.fleaimg}"></td>
 	</tr>
-	
 	<tr>
 		<td colspan="2" style="text-align: center;">
-		<button onclick="location.href='howupdate?hownum=${dto.hownum}'">수정</button>
-		<button id="howdelete">삭제</button>
+		<button onclick="location.href='fleaupdate?fleanum=${dto.fleanum}'">수정</button>
+		<button id="fleadelete">삭제</button>
 	</tr>
 </table>
 
-<form action="howreviewsave">
-<input type="hidden" value="${dto.hownum}" name="hownum">
+<form action="fleareviewsave">
+<input type="hidden" value="${dto.fleanum}" name="hownum">
 <input type="hidden" value="${dto.id}" name="id">
 <table border="1" align="center" width="800px">
 	<tr>
@@ -81,23 +83,23 @@ $(document).ready(function() {
 
 
 <table border="1" align="center" width="800px" style="margin-bottom: 100px">
-<c:forEach items="${list}" var="rr">
+<c:forEach items="${list}" var="fr">
 	<tr>
 		<th>
-		<c:forEach var="i" begin="0" end="${rr.indent}">
+		<c:forEach var="i" begin="0" end="${fr.fleaindent}">
 			<c:choose>
-				<c:when test="${i<rr.indent}">
+				<c:when test="${i<fr.fleaindent}">
 					&emsp;
 				</c:when>
-				<c:when test="${i==rr.indent}">
-					<img alt="" src="./image/reviewicon.png" height="30px">
+				<c:when test="${i==fr.fleaindent}">
+					<img alt="" src="" height="30px">
 				</c:when>
 			</c:choose>
 			
 		</c:forEach>
-		${rr.review}</th>
+		${fr.fleareview}</th>
 		<td>
-		<button onclick="location.href='howrere?reviewnum=${rr.reviewnum}'">댓글달기</button>
+		<button onclick="location.href='flearere?reviewnum=${fr.fleareviewnum}'">댓글달기</button>
 	</tr>
 </c:forEach>	
 </table>
