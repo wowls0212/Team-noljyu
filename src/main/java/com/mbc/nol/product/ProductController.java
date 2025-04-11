@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -19,7 +20,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 public class ProductController {
 	@Autowired
 	SqlSession sqlSession;
-	String path="C:\\MBC12AI\\NOLJYU-main\\src\\main\\webapp\\image";
+	String path="C:\\Noljyu\\Team-noljyu\\src\\main\\webapp\\image";
 	
 	@RequestMapping(value = "/productinput")
 	public String product1()
@@ -32,16 +33,17 @@ public class ProductController {
 	{
 			String id=mul.getParameter("id");
 			String animal=mul.getParameter("animal");
-			String productlist=mul.getParameter("productlist");
+			String productlist=mul.getParameter("productlist");				
 			int price=Integer.parseInt(mul.getParameter("price"));
 			MultipartFile mf=mul.getFile("productimg");
 			String fname=mf.getOriginalFilename();
 			UUID uu=UUID.randomUUID();
 			fname=uu.toString()+"_"+fname;
 			mf.transferTo(new File(path+"\\"+fname));			
-			String productdate=mul.getParameter("productdate");
+			String productdate=mul.getParameter("productdate");	
+			String productname=mul.getParameter("productname");
 			ProductService ps=sqlSession.getMapper(ProductService.class);
-			ps.productinput(id,animal,productlist,price,fname,productdate);
+			ps.productinput(id,animal,productlist,price,fname,productdate,productname);			
 			
 			return "redirect:/main";
 	}
@@ -79,21 +81,24 @@ public class ProductController {
 		
 		return "pmodify1";
 	}
+	
 	@RequestMapping(value = "/pmodifysave")
 	public String product6(MultipartHttpServletRequest mul) throws IllegalStateException, IOException 
 	{
 		int productnum=Integer.parseInt(mul.getParameter("productnum"));
 		String id=mul.getParameter("id");
 		String animal=mul.getParameter("animal");
-		String productlist=mul.getParameter("productlist");
+		String productlist=mul.getParameter("productlist");		
 		int price=Integer.parseInt(mul.getParameter("price"));
 		MultipartFile mf=mul.getFile("productimg");//이미지의 여러정보
 		String dfname=mul.getParameter("himage");//기존이미지
 		String fname=mf.getOriginalFilename();//파일명과 확장자
 		UUID uu=UUID.randomUUID();
 		fname=uu.toString()+"_"+fname;
+		String productdate=mul.getParameter("productdate");
+		String productname=mul.getParameter("productname");
 		ProductService ps=sqlSession.getMapper(ProductService.class);
-		ps.pmodify2(productnum,id,animal,productlist,price,fname);
+		ps.pmodify2(productnum,id,animal,productlist,price,fname,productdate,productname);
 		mf.transferTo(new File(path+"\\"+fname));//수정이미지 저장
 		mf.transferTo(new File(path+"\\"+dfname));
 		File ff=new File(path+"\\"+dfname);
@@ -113,18 +118,47 @@ public class ProductController {
 		
 		return "pdelete1";
 	}
+	
 	@RequestMapping(value = "/pdelete2")
 	public String product8(HttpServletRequest request) 
 	{
-		int dnum=Integer.parseInt(request.getParameter("productnumber"));
-		String dfname=request.getParameter("himage");
-		
+		int dnum=Integer.parseInt(request.getParameter("productnum"));
+		String dfname=request.getParameter("himage");		
 		ProductService ps=sqlSession.getMapper(ProductService.class);
 		ps.pdelete2(dnum);		
 		File ff=new File(path+"\\"+dfname);
 		ff.delete();	
 		
-		return "redirect:/";
+		return "redirect:/productout";
+	}
+	
+	
+	@RequestMapping(value = "/productsearch")
+	public String product9() 
+	{
+		return "psearch1";
+	}
+	
+	@RequestMapping(value = "/psearch2")
+	public String product10(HttpServletRequest request, Model model) 
+	{
+		String name=request.getParameter("scname");
+		String value=request.getParameter("scvalue");
+		ProductService ps=sqlSession.getMapper(ProductService.class);
+		ArrayList<ProductDTO>list=ps.psearch2(name,value);
+		model.addAttribute("list", list);
+				
+		return "psearch2";
+	}
+	
+	@RequestMapping(value = "/dogproduct")
+	public String product11(Model model) 
+	{
+		ProductService ps=sqlSession.getMapper(ProductService.class);
+		ArrayList<ProductDTO>list=ps.productout();
+		model.addAttribute("list",list);
+		
+		return "dogproduct";
 	}
 	
 }
