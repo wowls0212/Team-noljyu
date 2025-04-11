@@ -72,7 +72,7 @@
       <put-attribute name="body" value="/WEB-INF/views/product/productout.jsp"/>
    </definition>
    <!-- 상품 상세조회 -->
-   <definition name="produdetail" extends="baseLayout">
+   <definition name="productdetail" extends="baseLayout">
       <put-attribute name="title" value="메인화면"/>
       <put-attribute name="body" value="/WEB-INF/views/product/productdetail.jsp"/>
    </definition>
@@ -86,7 +86,21 @@
       <put-attribute name="title" value="메인화면"/>
       <put-attribute name="body" value="/WEB-INF/views/product/pdelete1.jsp"/>
    </definition>  
-   
+   <!--  상품자료 검색입력  -->
+   <definition name="psearch1" extends="baseLayout">
+	  <put-attribute name="title" value="상품자료검색 입력화면"/>
+	  <put-attribute name="body" value="/WEB-INF/views/product/psearch1.jsp"/>
+	</definition>
+   <!--  상품자료 검색출력  -->
+   <definition name="psearch2" extends="baseLayout">
+	  <put-attribute name="title" value="상품자료검색 출력화면"/>
+	  <put-attribute name="body" value="/WEB-INF/views/product/psearch2.jsp"/>
+   </definition>   
+     <!--  개 상품자료 전체출력  -->
+   <definition name="dogproduct" extends="baseLayout">
+	  <put-attribute name="title" value="개 상품자료 전체 출력화면"/>
+	  <put-attribute name="body" value="/WEB-INF/views/product/dogproduct.jsp"/>
+   </definition> 
    
    <!-- 게시물 등록 -->
    <definition name="postinput" extends="baseLayout">

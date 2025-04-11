@@ -3,6 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+caption
+{
+	text-align:center;
+}
+th,td
+{
+	text-align:center;
+}
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -11,28 +21,35 @@
 <Table border="3" width="600px" align="center">
 <caption>상품자료 입력</caption>
 	<tr>
-		<th>동물구분</th>
-		<td>
-			<select>
-				<option value="dog" name="animal">개</option>
-				<option value="cat" name="animal">고양이</option>
-				<option value="bird" name="animal">새</option>
-				<option value="fish" name="animal">물고기</option>
-				<option value="creeping" name="animal">파충류</option> 
-			</select>
-		</td>
-	</tr>
-	<tr>
 		<th>아이디</th>
 		<td><input type="text" name="id"> </td>		
 	</tr>
-	<tr>
-		<th>종류</th>
-		<td><input type="text" name="animal"> </td>		
-	</tr>
+   <tr>
+      <th>동물구분</th>
+      <td>
+         <select name="animal">
+            <option value="dog">개</option>
+            <option value="cat">고양이</option>
+            <option value="bird">새</option>
+            <option value="fish">물고기</option>
+            <option value="creep">파충류</option> 
+         </select>
+      </td>
+   </tr>
 	<tr>
 		<th>상품목록</th>
-		<td><input type="text" name="productlist"> </td>		
+		<td>
+           <select name="productlist">
+         	  <option value="dogfood">사료&간식</option>
+              <option value="dogtoy">장난감&리빙</option>
+              <option value="doghealth">건강&배변</option>
+              <option value="dogbeauty">미용&패션</option>             
+           </select>
+      </td>		
+	</tr>
+	<tr>
+		<th>상품명</th>
+		<td><input type="text" name="productname"> </td>		
 	</tr>
 	<tr>	
 		<th>가격</th>

@@ -23,7 +23,7 @@ public class HowController {
 
 	@Autowired
 	SqlSession sqlsession;
-	String path="C:\\Users\\320-22\\Downloads\\noljyu\\src\\main\\webapp\\image";
+	String path="C:\\Noljyu\\Team-noljyu\\src\\main\\webapp\\image";
 	
 	//입력 페이지로 이동
 	@RequestMapping(value = "/howinput")
@@ -53,22 +53,55 @@ public class HowController {
 	
 	//게시글 출력
 	@RequestMapping(value = "/howout")
-	public String hh3(Model model) {
-		HowService hs = sqlsession.getMapper(HowService.class);
-		ArrayList<HowDTO> list = hs.howout();
-		model.addAttribute("list", list);
+	public String hh3(HttpServletRequest request, HowPageDTO dto, Model model) {
+		String nowPage=request.getParameter("nowPage");
+        String cntPerPage=request.getParameter("cntPerPage");
+        HowService hs = sqlsession.getMapper(HowService.class);
+		
+        //전체 레코드 수 구하기 
+        int total=hs.howtotal();
+        if(nowPage==null && cntPerPage == null) {
+           nowPage="1";
+           cntPerPage="10";
+        }
+        else if(nowPage==null) {
+           nowPage="1";
+        }
+        else if(cntPerPage==null) {
+           cntPerPage="10";
+        }
+        dto = new HowPageDTO(Integer.parseInt(nowPage), total, Integer.parseInt(cntPerPage));
+		model.addAttribute("list", hs.howout(dto));
+		model.addAttribute("paging", dto);
 		return "howout";
 	}
 	
 	//게시글 상세내용, 댓글/대댓글 출력
 	@RequestMapping(value = "/howdetail")
-	public String hh4(HttpServletRequest request, Model model) {
+	public String hh4(HttpServletRequest request , HowPageDTO pdto, Model model) {
+		String nowPage=request.getParameter("nowPage");
+        String cntPerPage=request.getParameter("cntPerPage");
 		int hownum = Integer.parseInt(request.getParameter("hownum"));
 		HowService hs = sqlsession.getMapper(HowService.class);
+		
+		//전체 레코드 수 구하기
+		int total=hs.howreviewtotal();
+		System.out.println(total);
+		if(nowPage==null && cntPerPage == null) {
+           nowPage="1";
+           cntPerPage="5";
+        }
+        else if(nowPage==null) {
+           nowPage="1";
+        }
+        else if(cntPerPage==null) {
+           cntPerPage="5";
+        }
+		pdto = new HowPageDTO(Integer.parseInt(nowPage), total, Integer.parseInt(cntPerPage));
 		HowDTO dto = hs.howdetailout(hownum);
-		ArrayList<HowReviewDTO> list = hs.howreviewout(hownum);
 		model.addAttribute("dto", dto);
-		model.addAttribute("list", list);
+		model.addAttribute("list", hs.howreviewout(hownum,pdto));
+		model.addAttribute("paging", pdto);
 		return "howdetail";
 	}
 	
@@ -82,7 +115,7 @@ public class HowController {
 		hs.howreview(hownum,id,review);
 		//HowReviewDTO dot = hs.howreviewout();
 		//model.addAttribute("dot", dot);
-		return "redirect:/";
+		return "redirect:/howdetail?hownum="+hownum;
 	}
 	
 	//대댓글 입력 페이지
@@ -96,20 +129,30 @@ public class HowController {
 	}
 	
 	//대댓글 DB 저장, 들여쓰기
+	@ResponseBody
 	@RequestMapping(value = "/howreresave")
-	public String hh7(HttpServletRequest request) {
-		int hownum=Integer.parseInt(request.getParameter("hownum"));
-		String id=request.getParameter("id");
-		int groups=Integer.parseInt(request.getParameter("groups"));
-		int step=Integer.parseInt(request.getParameter("step"));
-		int indent=Integer.parseInt(request.getParameter("indent"));
-		String review=request.getParameter("review");
+	public String hh7(int reviewnum, String review, HttpServletRequest request) {
 		HowService hs = sqlsession.getMapper(HowService.class);
+		//기존 댓글의 정보를 가져옴
+		HowReviewDTO dto = hs.rereout(reviewnum);
+		
+		//기존 댓글의 hownum, id, groups, step, indent 가져옴
+		int hownum=dto.getHownum();
+		String id=dto.getId(); //추후에 사용자 아이디 ${id}로 바꿔야 함
+		int groups=dto.getGroups();
+		int step=dto.getStep();
+		int indent=dto.getIndent();
+		
+		//step, indent 처리, 대댓글 DB 저장
 		hs.howstepup(groups,step);
 		step++;
 		indent++;
 		hs.howreinsert(hownum,id,review,groups,step,indent);
-		return "redirect:/";
+		
+		//대댓글 확인
+		int check = hs.rerecheck(review);
+		System.out.println(check);
+		return Integer.toString(check);
 	}
 	
 	//게시글 수정 페이지 이동
@@ -147,7 +190,7 @@ public class HowController {
 			ff.delete();
 		}
 		
-		return "redirect:/";
+		return "redirect:/howdetail?hownum="+hownum;
 	}
 	
 	//게시글 삭제 ajax
@@ -180,4 +223,30 @@ public class HowController {
 		model.addAttribute("howvalue", howvalue);
 		return "howsearch";
 	}
+	
+	//댓글 수정 ajax
+	@ResponseBody
+	@RequestMapping(value = "/howreviewupdate")
+	public String hh12(int reviewnum, String review, Model model) {
+		System.out.println(reviewnum);
+		HowService hs = sqlsession.getMapper(HowService.class);
+		hs.howreviewupdate(reviewnum,review);
+		int count = hs.howreviewcheck(review);
+		String cnt = Integer.toString(count);
+		return cnt;
+	}
+	
+	//댓글 삭제 ajax
+		@ResponseBody
+		@RequestMapping(value = "/howreviewdelete")
+		public String hh13(int reviewnum, HttpServletResponse response, HttpServletRequest request) {
+			System.out.println(reviewnum);
+			HowService hs = sqlsession.getMapper(HowService.class);
+			hs.howreviewdelete(reviewnum);
+			int count = hs.howreviewdeletecheck(reviewnum);
+			String bigo="";
+			if (count == 0 ) bigo = "success";
+			else bigo = "fail";
+			return bigo;
+		}
 }
