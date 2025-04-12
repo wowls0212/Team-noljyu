@@ -59,7 +59,7 @@ public String mm3(UserDTO dto,HttpServletRequest request,Model model) {
 	String nickname=dto.getNickname();
 	String myanimal=dto.getMyanimal();
 	String admin=dto.getAdmin();
-	   String inputAdminPass = request.getParameter("adminPass");
+	String inputAdminPass = request.getParameter("adminPass");
 	PasswordEncoder pe = new BCryptPasswordEncoder();
 	pw=pe.encode(pw);
 	

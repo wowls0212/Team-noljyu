@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public interface HowService {
 
-	void howinsert(String id, String howtitle, String howdetail, String howimg);
+	void howinsert(String id, String howtitle, String howdetail, String howimg, String howtype);
 
 	ArrayList<HowDTO> howout(HowPageDTO dto);
 
 	HowDTO howdetailout(int hownum);
 
-	void howreview(int hownum, String id, String review);
+	void howreview(int hownum, String id, String review, String posttype);
 
 	ArrayList<HowReviewDTO> howreviewout(int hownum, HowPageDTO pdto);
 
@@ -18,7 +18,7 @@ public interface HowService {
 
 	void howstepup(int groups, int step);
 
-	void howreinsert(int hownum, String id, String review, int groups, int step, int indent);
+	void howreinsert(int hownum, String id, String review, int groups, int step, int indent, String posttype);
 
 	HowDTO howupdateout(int hownum);
 
