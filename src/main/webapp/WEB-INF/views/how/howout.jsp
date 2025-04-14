@@ -21,6 +21,30 @@
 		<td>${h.howcnt}</td>
 	</tr>
 	</c:forEach>
+	
+	<tr style="border-left: none;border-right: none;border-bottom: none">
+		<td colspan="8" style="text-align: center;">
+		<c:if test="${paging.startPage!=1 }">
+		   <a href="howout?nowPage=${paging.startPage-1 }&cntPerPage=${paging.cntPerPage}"></a>
+		</c:if>   
+		
+		<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p"> 
+		   <c:choose>
+		      <c:when test="${p == paging.nowPage }">
+		         <b><span style="color: red;">${p}</span></b>
+		      </c:when>   
+		      <c:when test="${p != paging.nowPage}">
+		         <a href="howout?nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a>
+		      </c:when>   
+		   </c:choose>
+		</c:forEach>      
+		
+		<c:if test="${paging.endPage != paging.lastPage}">
+			<a href="howout?nowPage=${paging.endPage+1}&cntPerPage=${paging.cntPerPage }">  </a>
+		</c:if>   
+	   </td>
+	</tr>
+	
 </table>
 
 <form action="howsearch" method="post">
