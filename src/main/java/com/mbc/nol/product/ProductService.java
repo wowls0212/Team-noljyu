@@ -22,6 +22,18 @@ public interface ProductService {
 
 	ArrayList<ProductDTO> psearch2(String name, String value);
 
-	ProductDTO dogproduct(int num);
+	ArrayList<ProductDTO> dogproductout();
+
+	ArrayList<ProductDTO> catproductout();
+
+	ArrayList<ProductDTO> birdproductout();
+
+	ArrayList<ProductDTO> fishproductout();
+
+	ArrayList<ProductDTO> creepproductout();
+
+	ArrayList<ProductDTO> dogtoyliving();
+
+	
 
 }

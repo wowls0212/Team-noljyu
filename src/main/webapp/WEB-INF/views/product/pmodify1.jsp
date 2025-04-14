@@ -9,9 +9,14 @@ table
 	margin-top: 50px;
 	margin-bottom: 350px;
 }
+caption
+{
+	text-align:center;
+}
 th,td
 {
 	text-align:center;
+	font-size:1.2em;
 }
 </style>
 <meta charset="UTF-8">
