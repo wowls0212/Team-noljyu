@@ -6,13 +6,13 @@ public interface HowService {
 
 	void howinsert(String id, String howtitle, String howdetail, String howimg);
 
-	ArrayList<HowDTO> howout();
+	ArrayList<HowDTO> howout(HowPageDTO dto);
 
 	HowDTO howdetailout(int hownum);
 
 	void howreview(int hownum, String id, String review);
 
-	ArrayList<HowReviewDTO> howreviewout(int hownum);
+	ArrayList<HowReviewDTO> howreviewout(int hownum, HowPageDTO pdto);
 
 	HowReviewDTO howrere(int hownum);
 
@@ -33,5 +33,21 @@ public interface HowService {
 	ArrayList<HowDTO> howsearch(String howkey, String howvalue);
 
 	ArrayList<HowDTO> howsearchall(String howvalue);
+
+	void howreviewupdate(int reviewnum, String reveiwContentUpdate);
+
+	int howreviewcheck(String reveiwContentUpdate);
+
+	void howreviewdelete(int reviewnum);
+
+	int howreviewdeletecheck(int reviewnum);
+
+	int howtotal();
+
+	int howreviewtotal();
+
+	HowReviewDTO rereout(int reviewnum);
+
+	int rerecheck(String review);
 
 }

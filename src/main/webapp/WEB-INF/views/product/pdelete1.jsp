@@ -3,6 +3,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+table
+{
+	margin-top: 50px;
+	margin-bottom: 350px;
+}
+th,td
+{
+	text-align:center;
+}
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -25,6 +36,10 @@
 <tr>
 	<th>상품목록</th>
 	<td><input type="text" name="productlist" value="${dto.productlist}" readonly></td>	
+</tr>
+<tr>
+	<th>상품명</th>
+	<td><input type="text" name="productname" value="${dto.productname}" readonly></td>	
 </tr>
 <tr>
 	<th>가격</th>
