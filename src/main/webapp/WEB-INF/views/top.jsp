@@ -66,7 +66,7 @@ font-style: italic;
         <ul class="nav navbar-nav navbar-right">
         <c:choose>
         <c:when test="${loginstate==true }">
-        <li><a href="mypage"><span class="glyphicon glyphicon-user"></span>${id }마이페이지</a></li>
+        <li><a href="mypage?id=${id }"><span class="glyphicon glyphicon-user"></span>${id}님 마이페이지</a></li>
       <li><a href="logout"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a></li>
         </c:when>
         <c:otherwise>
@@ -74,6 +74,7 @@ font-style: italic;
       <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
       </c:otherwise>
       </c:choose>
+      
     </ul>
         <form class="navbar-form navbar-left" action="/action_page.php">
       <div class="form-group">
