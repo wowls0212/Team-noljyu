@@ -25,11 +25,11 @@ th,td
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="dogproductmain"><img alt="" src="./image/2-modified.png" width="200px" height="160px"></a>
-	<a href="catproductmain"><img alt="" src="./image/cat-modified.png" width="200px" height="160px"></a>
-	<a href="birdproductmain"><img alt="" src="./image/bird2-modified.png" width="200px" height="160px"></a>
-	<a href="fishproductmain"><img alt="" src="./image/goldfish-modified.png" width="200px" height="160px"></a>
-	<a href="creepproductmain"><img alt="" src="./image/reptile2-modified.png" width="200px" height="160px"></a>
+<a href="dogproduct"><img alt="" src="./image/2-modified.png" width="200px" height="160px"></a>
+<a href="catproduct"><img alt="" src="./image/cat-modified.png" width="200px" height="160px"></a>
+<a href="birdproduct"><img alt="" src="./image/bird2-modified.png" width="200px" height="160px"></a>
+<a href="fishproduct"><img alt="" src="./image/goldfish-modified.png" width="200px" height="160px"></a>
+<a href="creepingproduct"><img alt="" src="./image/reptile2-modified.png" width="200px" height="160px"></a>
 
 
 
@@ -60,7 +60,7 @@ th,td
 			<a href="pmodify1?num=${pro.productnum}">수정</a>
 			<a href="pdelete1?num=${pro.productnum}">삭제</a>
 		</td>	
-	</tr>		
+	</tr>	
 	</c:forEach>		
 </table>
 </body>
