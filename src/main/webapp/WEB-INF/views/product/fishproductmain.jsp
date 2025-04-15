@@ -65,8 +65,6 @@ gap:16px;
   display: flex;
   gap: 10px; /* 이미지 간 간격 */
 }
-
-
 .product-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 1줄에 4개 */
@@ -97,8 +95,6 @@ gap:16px;
   font-size: 14px;
   color: #888;
 }
-
-
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -106,32 +102,34 @@ gap:16px;
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="aa">
-		<a href="dogproduct"><img alt="" src="./image/2-modified.png" width="200px" height="160px"></a>
-		<a href="catproduct"><img alt="" src="./image/cat-modified.png" width="200px" height="160px"></a>
-		<a href="birdproduct"><img alt="" src="./image/bird2-modified.png" width="200px" height="160px"></a>
-		<a href="fishproduct"><img alt="" src="./image/goldfish-modified.png" width="200px" height="160px"></a>
-		<a href="creepingproduct"><img alt="" src="./image/reptile2-modified.png" width="200px" height="160px"></a>
+<div id="aa">
+		<a href="dogproductmain"><img alt="" src="./image/2-modified.png" width="200px" height="160px"></a>
+		<a href="catproductmain"><img alt="" src="./image/cat-modified.png" width="200px" height="160px"></a>
+		<a href="birdproductmain"><img alt="" src="./image/bird2-modified.png" width="200px" height="160px"></a>
+		<a href="fishproductmain"><img alt="" src="./image/goldfish-modified.png" width="200px" height="160px"></a>
+		<a href="creepproductmain"><img alt="" src="./image/reptile2-modified.png" width="200px" height="160px"></a>
 	</div>
+	<br>
 	<div id="bb">
 		<a href="dogfoodsnack">사료&간식</a>
 		<a href="dogtoyliving">장난감&리빙</a>
 		<a href="doghealthtoilet">건강&배변</a>
 		<a href="dogbeautyfashion">미용&패션</a>
 	</div>
-
-<div class="product-list">
-  <c:forEach items="${list}" var="pro">
-    <div class="product">
-      <a href="productdetail?num=${pro.productnum}">
-        <img alt="${pro.productname}" src="./image/${pro.productimg}">
-      </a>
-      <div class="name">${pro.productname}</div>
-      <div class="price">₩${pro.price}</div>
-    </div>
-  </c:forEach>
-</div>
-
+	<br>
+	<div class="product-list">
+	  <c:forEach items="${list}" var="pro">
+	    <div class="product">
+	      <a href="productdetail?num=${pro.productnum}">
+	        <img alt="${pro.productname}" src="./image/${pro.productimg}" width="300px" height="300px">
+	      </a>
+	      <div class="animal">${pro.animal}</div>
+	      <div class="productlist">${pro.productlist}</div>
+	      <div class="name">${pro.productname}</div>
+	      <div class="price">₩${pro.price}</div>
+	    </div>
+	  </c:forEach>
+	</div>
 
 	<div class="flex-container">
 	  <c:forEach items="${list}" var="pro">
@@ -139,7 +137,7 @@ gap:16px;
 	      <div class="container">
 	        <div class="top">	
 	          <a href="productdetail?num=${pro.productnum}">	
-	            <img alt="${pro.productname}" src="./image/${pro.productimg}" width="200px" height="200px">
+	            <img alt="${pro.productname}" src="./image/${pro.productimg}" width="180px" height="180px">
 	          </a>
 	        </div>
 	        <div class="bottom">

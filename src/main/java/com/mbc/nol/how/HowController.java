@@ -37,14 +37,14 @@ public class HowController {
 		String id=mul.getParameter("id");
 		String howtitle=mul.getParameter("howtitle");
 		String howdetail=mul.getParameter("howdetail");
-		
+		String howtype=mul.getParameter("knowhow");
 		MultipartFile mf = mul.getFile("howimg");
 		String howimg=mf.getOriginalFilename();
 		UUID uu = UUID.randomUUID();
 		howimg=uu.toString()+"-"+howimg;
 		System.out.println(id+" "+howtitle+" "+howdetail+ " "+howimg);
 		HowService hs = sqlsession.getMapper(HowService.class);
-		hs.howinsert(id,howtitle,howdetail,howimg);
+		hs.howinsert(id,howtitle,howdetail,howimg,howtype);
 		
 		mf.transferTo(new File(path+"\\"+howimg));
 		
@@ -81,7 +81,7 @@ public class HowController {
 	public String hh4(HttpServletRequest request , HowPageDTO pdto, Model model) {
 		String nowPage=request.getParameter("nowPage");
         String cntPerPage=request.getParameter("cntPerPage");
-		int hownum = Integer.parseInt(request.getParameter("hownum"));
+		int hownum = Integer.parseInt(request.getParameter("postnum"));
 		HowService hs = sqlsession.getMapper(HowService.class);
 		
 		//전체 레코드 수 구하기
@@ -111,11 +111,12 @@ public class HowController {
 		int hownum=Integer.parseInt(request.getParameter("hownum"));
 		String id = request.getParameter("id");
 		String review=request.getParameter("review");
+		String posttype=request.getParameter("posttype");
 		HowService hs = sqlsession.getMapper(HowService.class);
-		hs.howreview(hownum,id,review);
+		hs.howreview(hownum,id,review, posttype);
 		//HowReviewDTO dot = hs.howreviewout();
 		//model.addAttribute("dot", dot);
-		return "redirect:/howdetail?hownum="+hownum;
+		return "redirect:/howdetail?postnum="+hownum;
 	}
 	
 	//대댓글 입력 페이지
@@ -137,17 +138,17 @@ public class HowController {
 		HowReviewDTO dto = hs.rereout(reviewnum);
 		
 		//기존 댓글의 hownum, id, groups, step, indent 가져옴
-		int hownum=dto.getHownum();
+		int hownum=dto.getPostnum();
 		String id=dto.getId(); //추후에 사용자 아이디 ${id}로 바꿔야 함
-		int groups=dto.getGroups();
-		int step=dto.getStep();
-		int indent=dto.getIndent();
-		
+		int groups=dto.getPostgroups();
+		int step=dto.getPoststep();
+		int indent=dto.getPostindent();
+		String posttype=dto.getPosttype();
 		//step, indent 처리, 대댓글 DB 저장
 		hs.howstepup(groups,step);
 		step++;
 		indent++;
-		hs.howreinsert(hownum,id,review,groups,step,indent);
+		hs.howreinsert(hownum,id,review,groups,step,indent,posttype);
 		
 		//대댓글 확인
 		int check = hs.rerecheck(review);
@@ -190,7 +191,7 @@ public class HowController {
 			ff.delete();
 		}
 		
-		return "redirect:/howdetail?hownum="+hownum;
+		return "redirect:/howdetail?postnum="+hownum;
 	}
 	
 	//게시글 삭제 ajax

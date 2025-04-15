@@ -21,30 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class UserController {
-
-	@Autowired
-	SqlSession sqlSession;
-
-	// 회원가입 폼 이동
-	@RequestMapping(value = "/userinput")
-	public String userInputPage() {
-		return "userinput";
-	}
-
-	// 아이디 중복 검사
-	@ResponseBody
-	@RequestMapping(value = "/idcheck2")
-	public String idCheck(String id) {
-		UserService us = sqlSession.getMapper(UserService.class);
-		int count = us.idcount(id);
-		String bigo = "";
-		if (count == 1) {
-			bigo = "no";
-		} else {
-			bigo = "ok";
-		}
-		return bigo;
-	}
 	
 	// 닉네임 중복 검사
 	@ResponseBody
