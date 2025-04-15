@@ -4,4 +4,5 @@ public interface LoginService {
 
 	String pwsearch(String id);
 
+	String getAdminStatus(String id);
 }

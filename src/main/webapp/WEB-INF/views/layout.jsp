@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="t" %>
 <!DOCTYPE html>
 <html>
@@ -38,19 +39,26 @@ nav
    background-color: #000000;
    color: #ffffff; 
 }
+
 </style>
 </head>
 <body>
-   <div id="container">
-      <div id="top">
-         <t:insertAttribute name="top"/>
-      </div>
+  <div id="top">
+  <c:choose>
+    <c:when test="${sessionScope.admin eq 'admin'}">
+      <jsp:include page="/WEB-INF/views/top.jsp" />
+    </c:when>
+    <c:otherwise>
+      <jsp:include page="/WEB-INF/views/top_user.jsp" />
+    </c:otherwise>
+  </c:choose>
+</div>
+
       <div id="body">
          <t:insertAttribute name="body"/>
       </div>
       <div id="footer">
          <t:insertAttribute name="footer"/>
       </div>
-   </div>
 </body>
 </html>

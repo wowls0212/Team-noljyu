@@ -2,13 +2,17 @@
 <!DOCTYPE tiles-definitions PUBLIC
 "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
 "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
 <tiles-definitions>
    <definition name="baseLayout" template="/WEB-INF/views/layout.jsp">
       <put-attribute name="title" value=""/>
       <put-attribute name="top" value="/WEB-INF/views/top.jsp"/>
       <put-attribute name="body" value=""/>
       <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+      
    </definition>
+
+   
    <!-- 메인화면 -->
    <definition name="main" extends="baseLayout">
       <put-attribute name="title" value="메인화면"/>
@@ -59,6 +63,12 @@
      <definition name="deleteview" extends="baseLayout">
       <put-attribute name="title" value="메인화면"/>
       <put-attribute name="body" value="/WEB-INF/views/user/deleteview.jsp"/>
+   </definition>
+   
+    <!-- 수정,탈퇴 2차 비밀번호 확인 -->
+     <definition name="pwcheck" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/pwcheck.jsp"/>
    </definition>
    
    <!-- 상품등록 -->
@@ -236,6 +246,7 @@
       <put-attribute name="title" value="메인화면"/>
       <put-attribute name="body" value="/WEB-INF/views/community/comsearch.jsp"/>
    </definition>  
+
 
    
 </tiles-definitions>

@@ -6,10 +6,6 @@
 <style type="text/css">
 td,th{
 text-align: center; 
-}
-img:hover{
-transform:scale(2,2); 
-}
 
 </style>
 <meta charset="UTF-8">
@@ -22,13 +18,13 @@ transform:scale(2,2);
 			
 			<tr>
 			<th>아이디</th>
-			<td><input type="hidden" name="id" value="${dto.id}">
+			<td><input type="text" name="id" value="${dto.id}" readonly style="background-color: #f0f0f0;">
             </td>
             </tr>
-            
+
 			<tr>
-				<th>패스워드</th>
-				<td><input type="text" name="pw" value="${dto.pw}" required="required"></td>
+				<th>새 비밀번호</th>
+				<td><input type="password" name="pw" placeholder="변경 시에만 입력"></td>
 			</tr>
 
 			<tr>
@@ -55,10 +51,11 @@ transform:scale(2,2);
 				<th>나의 반려동물</th>
 				<td><input type="text" name="myanimal" value="${dto.myanimal}" required="required"></td>
 			</tr>
+			
 
 			<tr style="text-align: center;">
 				<td colspan="2">
-				<input type="submit" value="전송"> 
+				<input type="submit" value="수정"> 
 				<input type="button" value="취소" onclick="location.href='main'"></td>
 			</tr>
 

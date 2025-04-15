@@ -16,7 +16,6 @@ public void setAdmin(String admin) {
 
 public UserDTO(String id, String pw, String name, String address, String phone, String nickname, String myanimal,
 		String admin) {
-	super();
 	this.id = id;
 	this.pw = pw;
 	this.name = name;

@@ -8,35 +8,39 @@ td, th {
 	text-align: center;
 }
 
-img:hover {
-	transform: scale(2, 2);
-}
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#idcheck").click(function() {
-			var id = $("#id").val();
-			$.ajax({
-				type : "post",
-				url : "idcheck2",
-				data : {"id" : id},
-				async : true,
-				success : function(res) {
-					if (res == "ok") 
-					{
-						alert("사용가능 ID입니다.");
-					} 
-					else 
-					{
-						alert("사용중인 ID입니다. 다른ID를 사용하세요");
-					}
-				}
-			});
-		});
-	});
+$(document).ready(function() {
+    // ID 체크
+    $("#idcheck").click(function() {
+        var id = $("#id").val();
+        $.post("idcheck2", { id: id }, function(res) {
+            alert(res === "ok" ? "사용가능 ID입니다." : "이미 사용중인 ID입니다.");
+        });
+    });
+
+    // 닉네임 체크
+    $("#nicknameCheck").click(function() {
+        var nickname = $("#nickname").val();
+        $.post("nicknamecheck", { nickname: nickname }, function(res) {
+            alert(res === "ok" ? "사용 가능한 닉네임입니다." : "이미 사용 중인 닉네임입니다.");
+        });
+    });
+
+    // 관리자 선택
+    $("select[name='admin']").change(function() {
+        if ($(this).val() === "admin") {
+            $("#adminPwRow").show();
+        } else {
+            $("#adminPwRow").hide().val("");
+        }
+    });
+});
+
 </script>
+
 
 <script>
 $(document).ready(function(){
@@ -56,8 +60,12 @@ $(document).ready(function(){
 </head>
 <body>
 	<form action="usersave" method="post">
-		<table border="3" width="400px" align="center">
-			<caption>회원관리 입력화면</caption>
+		<table border="3" width="450px" align="center">
+			<caption>회원가입</caption>
+
+			<c:if test="${not empty msg}">
+				<div style="color: red">${msg}</div>
+			</c:if>
 
 			<tr>
 				<th>회원 유형</th>
@@ -76,7 +84,7 @@ $(document).ready(function(){
 				<th>아이디</th>
 				<td>
 				<input type="text" name="id" id="id"> 
-				<input type="button" id="idcheck" value="id중복검사">
+				<input type="button" id="idcheck" value="id 중복확인">
 				</td>
 			</tr>
 
@@ -97,12 +105,17 @@ $(document).ready(function(){
 
 			<tr>
 				<th>연락처</th>
-				<td><input type="text" name="phone"></td>
+				<td>
+				<input type="text" name="phone" placeholder="000-0000-0000"
+				 pattern="\d{3}-\d{3,4}-\d{4}" title="형식: 010-1234-5678" required>
+				</td>
 			</tr>
 
 			<tr>
 				<th>닉네임</th>
-				<td><input type="text" name="nickname"></td>
+				<td>
+				<input type="text" name="nickname" id="nickname"> 
+				<input type="button" id="nicknameCheck" value="닉네임 중복확인"></td>
 			</tr>
 
 			<tr>
@@ -113,7 +126,7 @@ $(document).ready(function(){
 			<tr style="text-align: center;">
 				<td colspan="2">
 				<input type="submit" value="입력">&emsp;
-				<input type="reset" value="취소"></td>
+				<input type="button" value="취소" onclick="location.href='main'">
 			</tr>
 
 

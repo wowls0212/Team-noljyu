@@ -11,9 +11,7 @@ public interface UserService {
 
 	ArrayList<UserDTO> allout();
 
-	ArrayList<UserDTO> scearcha(@Param("cate") String cate, @Param("scearch") String scearch);
-
-	ArrayList<UserDTO> all2out();
+	ArrayList<UserDTO> searcha(@Param("cate") String cate, @Param("scearch") String scearch);
 
 	UserDTO getuser(String loginId);
 
@@ -27,5 +25,7 @@ public interface UserService {
 	
 	// 관리자용 비밀번호 가져오기
 	String getAdminPassword();
+
+	int nicknamecount(String nickname);
 
 }

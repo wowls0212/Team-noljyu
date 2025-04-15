@@ -8,9 +8,6 @@
 td,th{
 text-align: center; 
 }
-img:hover{
-transform:scale(2,2); 
-}
 
 </style>
 <meta charset="UTF-8">
@@ -20,7 +17,7 @@ transform:scale(2,2);
 <table border="3" width="1000px" align="center">
 <caption>회원검색자료출력</caption>
 <tr>
-<th>아이디</th><th>이름</th><th>주소</th><th>연락처</th><th>닉네임</th><th>나의 반려동물</th>
+<th>아이디</th><th>이름</th><th>주소</th><th>연락처</th><th>닉네임</th><th>나의 반려동물</th><th>회원등급</th>
 </tr>
 <c:forEach items="${list}" var="my">
 <tr>
@@ -30,6 +27,7 @@ transform:scale(2,2);
     <td>${my.phone}</td>
     <td>${my.nickname}</td>
     <td>${my.myanimal}</td>
+    <td>${my.admin}</td>
     
 </tr>
 
