@@ -42,8 +42,28 @@ delete from "product" where "productnum"=#{param1}
 select * from "product" where "${param1}" like '%'||#{param2}||'%'
 </select>
 
-<select id="dogproduct" resultType="com.mbc.nol.product.ProductDTO">
-select * from "product"
+<select id="dogproductout" resultType="com.mbc.nol.product.ProductDTO">
+select * from "product" where "animal"='dog' 
+</select>
+
+<select id="dogtoyliving" resultType="com.mbc.nol.product.ProductDTO">
+select * from "product" where "animal"='dog' and "productlist"='dogtoy'
+</select>
+
+<select id="catproductout" resultType="com.mbc.nol.product.ProductDTO">
+select * from "product" where "animal"='cat' 
+</select>
+
+<select id="birdproductout" resultType="com.mbc.nol.product.ProductDTO">
+select * from "product" where "animal"='bird' 
+</select>
+
+<select id="fishproductout" resultType="com.mbc.nol.product.ProductDTO">
+select * from "product" where "animal"='fish' 
+</select>
+
+<select id="creepproductout" resultType="com.mbc.nol.product.ProductDTO">
+select * from "product" where "animal"='creep' 
 </select>
 
 </mapper>

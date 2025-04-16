@@ -3,26 +3,19 @@ package com.mbc.nol.how;
 import java.sql.Date;
 
 public class HowDTO {
-	int hownum;
-	String id,howtitle,howdetail,howimg;
-	int howcnt;
-	Date howdate;
-	public HowDTO() {}
-	public HowDTO(int hownum, String id, String howtitle, String howdetail, String howimg, int howcnt, Date howdate) {
+	int postnum;
+	String id, posttitle, postdetail, postimg;
+	int postcnt;
+	String postdate, posttype;
+	public HowDTO() {
 		super();
-		this.hownum = hownum;
-		this.id = id;
-		this.howtitle = howtitle;
-		this.howdetail = howdetail;
-		this.howimg = howimg;
-		this.howcnt = howcnt;
-		this.howdate = howdate;
+		// TODO Auto-generated constructor stub
 	}
-	public int getHownum() {
-		return hownum;
+	public int getPostnum() {
+		return postnum;
 	}
-	public void setHownum(int hownum) {
-		this.hownum = hownum;
+	public void setPostnum(int postnum) {
+		this.postnum = postnum;
 	}
 	public String getId() {
 		return id;
@@ -30,36 +23,44 @@ public class HowDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getHowtitle() {
-		return howtitle;
+	public String getPosttitle() {
+		return posttitle;
 	}
-	public void setHowtitle(String howtitle) {
-		this.howtitle = howtitle;
+	public void setPosttitle(String posttitle) {
+		this.posttitle = posttitle;
 	}
-	public String getHowdetail() {
-		return howdetail;
+	public String getPostdetail() {
+		return postdetail;
 	}
-	public void setHowdetail(String howdetail) {
-		this.howdetail = howdetail;
+	public void setPostdetail(String postdetail) {
+		this.postdetail = postdetail;
 	}
-	public String getHowimg() {
-		return howimg;
+	public String getPostimg() {
+		return postimg;
 	}
-	public void setHowimg(String howimg) {
-		this.howimg = howimg;
+	public void setPostimg(String postimg) {
+		this.postimg = postimg;
 	}
-	public int getHowcnt() {
-		return howcnt;
+	public int getPostcnt() {
+		return postcnt;
 	}
-	public void setHowcnt(int howcnt) {
-		this.howcnt = howcnt;
+	public void setPostcnt(int postcnt) {
+		this.postcnt = postcnt;
 	}
-	public Date getHowdate() {
-		return howdate;
+	public String getPostdate() {
+		return postdate;
 	}
-	public void setHowdate(Date howdate) {
-		this.howdate = howdate;
+	public void setPostdate(String postdate) {
+		this.postdate = postdate;
 	}
+	public String getPosttype() {
+		return posttype;
+	}
+	public void setPosttype(String posttype) {
+		this.posttype = posttype;
+	}
+	
+	
 	
 	
 }

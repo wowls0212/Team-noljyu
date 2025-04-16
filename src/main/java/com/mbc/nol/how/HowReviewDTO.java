@@ -1,25 +1,21 @@
 package com.mbc.nol.how;
 
 public class HowReviewDTO {
-	int hownum;
-	String id, review;
-	int reviewnum, groups, step, indent;
-	public HowReviewDTO() {}
-	public HowReviewDTO(int hownum, String id, String review, int reviewnum, int groups, int step, int indent) {
+	int postnum;
+	String id;
+	int postreviewnum;
+	String postreview;
+	int postgroups, poststep, postindent;
+	String posttype;
+	public HowReviewDTO() {
 		super();
-		this.hownum = hownum;
-		this.id = id;
-		this.review = review;
-		this.reviewnum = reviewnum;
-		this.groups = groups;
-		this.step = step;
-		this.indent = indent;
+		// TODO Auto-generated constructor stub
 	}
-	public int getHownum() {
-		return hownum;
+	public int getPostnum() {
+		return postnum;
 	}
-	public void setHownum(int hownum) {
-		this.hownum = hownum;
+	public void setPostnum(int postnum) {
+		this.postnum = postnum;
 	}
 	public String getId() {
 		return id;
@@ -27,36 +23,43 @@ public class HowReviewDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getReview() {
-		return review;
+	public int getPostreviewnum() {
+		return postreviewnum;
 	}
-	public void setReview(String review) {
-		this.review = review;
+	public void setPostreviewnum(int postreviewnum) {
+		this.postreviewnum = postreviewnum;
 	}
-	public int getReviewnum() {
-		return reviewnum;
+	public String getPostreview() {
+		return postreview;
 	}
-	public void setReviewnum(int reviewnum) {
-		this.reviewnum = reviewnum;
+	public void setPostreview(String postreview) {
+		this.postreview = postreview;
 	}
-	public int getGroups() {
-		return groups;
+	public int getPostgroups() {
+		return postgroups;
 	}
-	public void setGroups(int groups) {
-		this.groups = groups;
+	public void setPostgroups(int postgroups) {
+		this.postgroups = postgroups;
 	}
-	public int getStep() {
-		return step;
+	public int getPoststep() {
+		return poststep;
 	}
-	public void setStep(int step) {
-		this.step = step;
+	public void setPoststep(int poststep) {
+		this.poststep = poststep;
 	}
-	public int getIndent() {
-		return indent;
+	public int getPostindent() {
+		return postindent;
 	}
-	public void setIndent(int indent) {
-		this.indent = indent;
+	public void setPostindent(int postindent) {
+		this.postindent = postindent;
 	}
+	public String getPosttype() {
+		return posttype;
+	}
+	public void setPosttype(String posttype) {
+		this.posttype = posttype;
+	}
+	
 	
 	
 }
