@@ -132,5 +132,17 @@ $(document).ready(function(){
 
 		</table>
 	</form>
-</body>
-</html>
+	
+<!-- 회원가입 폼 하단 -->
+<div style="text-align: center; margin-top: 30px;">
+  <p><strong>SNS 계정으로 회원가입</strong></p>
+  <div style="display: inline-flex; gap: 20px; justify-content: center;">
+    <!-- 카카오 회원가입 -->
+    <a href="https://kauth.kakao.com/oauth/authorize?client_id=20a5e796e82f7a14c3129cd0e99636cd&amp;redirect_uri=http://localhost:8080/kakaoSignup&amp;response_type=code">
+      카카오로 회원가입
+    </a>
+    <!-- 네이버 로그인 -->
+	<a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=cBWORgjiixKTzRa29Ipm3&redirect_uri=http://localhost:8080/naverSignup&state=1234">
+	  네이버로 회원가입 </a>
+  </div>
+</div>

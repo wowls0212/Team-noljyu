@@ -27,5 +27,7 @@ public interface UserService {
 	String getAdminPassword();
 
 	int nicknamecount(String nickname);
+	
+	
 
 }
