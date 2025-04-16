@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mbc.nol.product.ProductService">
+
+<insert id="productinput">
+insert into "product" values(productnum_seq.nextval,#{param1},#{param2},#{param3},#{param4},#{param5},0,#{param6},#{param7})
+</insert> 	
+
+<select id="productout" resultType="com.mbc.nol.product.ProductDTO">
+select * from "product"
+</select>
+
+<update id="productcnt">
+update "product" set "productcnt"="productcnt"+1 where "productnum"=#{param1}
+</update>
+
+<select id="productdetail" resultType="com.mbc.nol.product.ProductDTO">
+select * from "product" where "productnum"=#{param1}
+</select>
+
+<select id="pmodify1" resultType="com.mbc.nol.product.ProductDTO">
+select * from "product" where "productnum"=#{param1}
+</select>
+
+<update id="pmodify2">
+update "product" set "id"=#{param2, jdbcType=VARCHAR},"animal"=#{param3, jdbcType=VARCHAR},"productlist"=#{param4, jdbcType=VARCHAR},"price"=#{param5},
+ "productimg"=#{param6, jdbcType=VARCHAR},"productdate"=#{param7},"productname"=#{param8, jdbcType=VARCHAR} where "productnum"=#{param1}
+</update>
+
+<select id="pdelete1" resultType="com.mbc.nol.product.ProductDTO">
+select * from "product" where "productnum"=#{param1}
+</select>
+
+<delete id="pdelete2">
+delete from "product" where "productnum"=#{param1}
+</delete>
+
+<select id="psearch2" resultType="com.mbc.nol.product.ProductDTO">
+select * from "product" where "${param1}" like '%'||#{param2}||'%'
+</select>
+
+<select id="dogproduct" resultType="com.mbc.nol.product.ProductDTO">
+select * from "product"
+</select>
+
+</mapper>
