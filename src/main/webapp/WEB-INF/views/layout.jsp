@@ -42,23 +42,34 @@ nav
 
 </style>
 </head>
-<body>
-  <div id="top">
-  <c:choose>
-    <c:when test="${sessionScope.admin eq 'admin'}">
-      <jsp:include page="/WEB-INF/views/top.jsp" />
-    </c:when>
-    <c:otherwise>
-      <jsp:include page="/WEB-INF/views/top_user.jsp" />
-    </c:otherwise>
-  </c:choose>
-</div>
+ <!-- 공통 알림 메시지 (회원가입/수정/삭제 등 완료 후 alert 창 띄움) -->
+  <c:if test="${not empty sessionScope.msg}">
+    <script>
+      alert("${sessionScope.msg}");
+    </script>
+    <c:remove var="msg" scope="session" /> <!--  메시지 한 번 출력 후 제거 -->
+  </c:if>
 
-      <div id="body">
-         <t:insertAttribute name="body"/>
-      </div>
-      <div id="footer">
-         <t:insertAttribute name="footer"/>
-      </div>
+
+  <div id="top">
+    <c:choose>
+      <c:when test="${sessionScope.admin eq 'admin'}">
+
+        <jsp:include page="/WEB-INF/views/top.jsp" />
+      </c:when>
+      <c:otherwise>
+
+        <jsp:include page="/WEB-INF/views/top_user.jsp" />
+      </c:otherwise>
+    </c:choose>
+  </div>
+
+  <div id="body">
+    <t:insertAttribute name="body"/>
+  </div>
+
+  <div id="footer">
+    <t:insertAttribute name="footer"/>
+  </div>
 </body>
 </html>

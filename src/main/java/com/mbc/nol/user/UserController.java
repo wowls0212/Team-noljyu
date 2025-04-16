@@ -63,7 +63,7 @@ public class UserController {
 
 	// 회원가입 처리
 	@RequestMapping(value = "/usersave")
-	public String userSave(UserDTO dto, HttpServletRequest request, Model model) {
+	public String userSave(UserDTO dto, HttpServletRequest request, HttpSession session, Model model) {
 	    PasswordEncoder pe = new BCryptPasswordEncoder();
 	    String encodedPw = pe.encode(dto.getPw());
 
@@ -80,18 +80,20 @@ public class UserController {
 	        String inputAdminPass = request.getParameter("adminPass");
 	        String savedAdminPass = us.getAdminPassword();
 
-	        if (savedAdminPass == null || !savedAdminPass.startsWith("$2")
-	                || !pe.matches(inputAdminPass, savedAdminPass)) {
+	        if (savedAdminPass == null || !savedAdminPass.startsWith("$2") 
+	        	|| !pe.matches(inputAdminPass, savedAdminPass)) {
+	     	
 	            model.addAttribute("msg", "관리자용 비밀번호가 일치하지 않습니다.");
 	            return "userinput";
 	        }
 	    }
 
 	    // 저장 실행
-	    us.insertq(dto.getId(), encodedPw, dto.getName(), dto.getAddress(),
-	            dto.getPhone(), dto.getNickname(), dto.getMyanimal(), dto.getAdmin());
+		us.insertq(dto.getId(), encodedPw, dto.getName(), dto.getAddress(), dto.getPhone(), dto.getNickname(),
+				dto.getMyanimal(), dto.getAdmin());
 
-	    return "redirect:/main";
+		session.setAttribute("msg", "환영합니다! 회원가입이 완료되었습니다.");
+		return "redirect:/main";
 	}
 
 
@@ -115,7 +117,18 @@ public class UserController {
 			return new ModelAndView("redirect:/login");
 		}
 	}
+	
+	// 회원 정보 삭제
+	@RequestMapping(value = "/admindelete", method = RequestMethod.POST)
+	public String adminDelete(HttpServletRequest request, HttpSession session) {
+	    String id = request.getParameter("id");
 
+	    UserService us = sqlSession.getMapper(UserService.class);
+	    us.delete2(id); // 삭제 수행
+
+	    session.setAttribute("msg", "회원 삭제가 완료되었습니다.");
+	    return "redirect:/userout";
+	}
 	// 검색 페이지 이동
 	@RequestMapping(value = "/usersearch")
 	public String userSearchPage() {
@@ -156,7 +169,7 @@ public class UserController {
 
 	// 회원정보 수정 저장
 	@RequestMapping(value = "/modifysave", method = RequestMethod.POST)
-	public String modifySave(HttpServletRequest request) {
+	public String modifySave(HttpServletRequest request, HttpSession session) {
 		String id = request.getParameter("id");
 		String pwInput = request.getParameter("pw");
 		String pw = null;
@@ -182,7 +195,8 @@ public class UserController {
 			us.modify2(id, dto.getPw(), name, address, phone, nickname, myanimal);
 		}
 
-		return "redirect:/main";
+		session.setAttribute("msg", "회원정보가 수정되었습니다.");
+	    return "redirect:/main";
 	}
 
 	// 회원 탈퇴 확인
@@ -200,7 +214,7 @@ public class UserController {
 
 	// 회원 탈퇴 처리
 	@RequestMapping(value = "/delete2", method = RequestMethod.POST)
-	public String deleteConfirm(HttpSession session) {
+	public String deleteConfirm(HttpServletRequest request, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		if (id == null)
 			return "redirect:/login";
@@ -208,7 +222,11 @@ public class UserController {
 		UserService us = sqlSession.getMapper(UserService.class);
 		us.delete2(id);
 		session.invalidate();
-		return "redirect:/main";
+		
+		 // 새로운 세션에서 메시지 저장
+	    HttpSession newSession = request.getSession();
+	    newSession.setAttribute("msg", "회원 탈퇴가 완료되었습니다.");
+	    return "redirect:/main";
 	}
 
 	// 비밀번호 확인 페이지 이동
