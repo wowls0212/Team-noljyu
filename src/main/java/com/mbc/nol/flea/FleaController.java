@@ -86,7 +86,11 @@ public class FleaController {
 		FleaService fs = sqlsession.getMapper(FleaService.class);
 		
 		//전체 레코드 수 구하기
+<<<<<<< HEAD
 		int total=fs.fleareviewtotal(fleanum);
+=======
+		int total=fs.fleareviewtotal();
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 		System.out.println(total);
 		if(nowPage==null && cntPerPage == null) {
            nowPage="1";
@@ -130,7 +134,11 @@ public class FleaController {
 	
 	//대댓글 DB 저장, 들여쓰기
 	@ResponseBody
+<<<<<<< HEAD
 	@RequestMapping(value = "/reresave")
+=======
+	@RequestMapping(value = "/fleareresave")
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 	public String hh7(int reviewnum, String review, HttpServletRequest request) {
 		FleaService fs = sqlsession.getMapper(FleaService.class);
 		//기존 댓글의 정보를 가져옴
@@ -192,7 +200,11 @@ public class FleaController {
 	}
 	
 	@ResponseBody
+<<<<<<< HEAD
 	@RequestMapping(value = "/postdelete")
+=======
+	@RequestMapping(value = "/fleadelete")
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 	public String fleadelete(int fleanum, HttpServletResponse response, HttpServletRequest request) {
 		FleaService fs = sqlsession.getMapper(FleaService.class);
 		fs.fleadelete(fleanum);
@@ -223,9 +235,15 @@ public class FleaController {
 	
 	//댓글 수정 ajax
 	@ResponseBody
+<<<<<<< HEAD
 	@RequestMapping(value = "/reviewupdate")
 	public String hh12(int reviewnum, String review, Model model) {
 		//System.out.println(reviewnum);
+=======
+	@RequestMapping(value = "/fleareviewupdate")
+	public String hh12(int reviewnum, String review, Model model) {
+		System.out.println(reviewnum);
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 		FleaService fs = sqlsession.getMapper(FleaService.class);
 		fs.fleareviewupdate(reviewnum,review);
 		int count = fs.fleareviewcheck(review);
@@ -235,9 +253,15 @@ public class FleaController {
 	
 	//댓글 삭제 ajax
 	@ResponseBody
+<<<<<<< HEAD
 	@RequestMapping(value = "/reviewdelete")
 		public String hh13(int reviewnum, HttpServletResponse response, HttpServletRequest request) {
 		//System.out.println(reviewnum);
+=======
+	@RequestMapping(value = "/fleareviewdelete")
+		public String hh13(int reviewnum, HttpServletResponse response, HttpServletRequest request) {
+		System.out.println(reviewnum);
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 		FleaService fs = sqlsession.getMapper(FleaService.class);
 		fs.fleareviewdelete(reviewnum);
 		int count = fs.fleareviewdeletecheck(reviewnum);

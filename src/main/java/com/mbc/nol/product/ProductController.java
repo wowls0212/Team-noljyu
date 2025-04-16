@@ -151,6 +151,7 @@ public class ProductController {
 		return "psearch2";
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping(value = "/dogproduct")
 	public String product11(Model model) 
 	{
@@ -159,6 +160,66 @@ public class ProductController {
 		model.addAttribute("list",list);
 		
 		return "dogproduct";
+=======
+	@RequestMapping(value = "/dogproductmain")
+	public String product11(HttpServletRequest request,Model model) 
+	{
+		ProductService ps=sqlSession.getMapper(ProductService.class);		
+		ArrayList<ProductDTO>list=ps.dogproductout();
+		model.addAttribute("list",list);
+		
+		return "dogproductmain";
+	}
+	
+	@RequestMapping(value = "dogtoyliving")
+	public String product12(HttpServletRequest request,Model model) 
+	{
+		ProductService ps=sqlSession.getMapper(ProductService.class);		
+		ArrayList<ProductDTO>list=ps.dogtoyliving();
+		model.addAttribute("list",list);
+		
+		return "dogtoyliving";
+	}
+	
+	@RequestMapping(value = "/catproductmain")
+	public String product16(HttpServletRequest request,Model model) 
+	{
+		ProductService ps=sqlSession.getMapper(ProductService.class);		
+		ArrayList<ProductDTO>list=ps.catproductout();
+		model.addAttribute("list",list);
+		
+		return "catproductmain";
+	}
+
+	@RequestMapping(value = "/birdproductmain")
+	public String product21(HttpServletRequest request,Model model) 
+	{
+		ProductService ps=sqlSession.getMapper(ProductService.class);		
+		ArrayList<ProductDTO>list=ps.birdproductout();
+		model.addAttribute("list",list);
+		
+		return "birdproductmain";
+	}
+	
+	@RequestMapping(value = "/fishproductmain")
+	public String product26(HttpServletRequest request,Model model) 
+	{
+		ProductService ps=sqlSession.getMapper(ProductService.class);		
+		ArrayList<ProductDTO>list=ps.fishproductout();
+		model.addAttribute("list",list);
+		
+		return "fishproductmain";
+	}
+	
+	@RequestMapping(value = "/creepproductmain")
+	public String product31(HttpServletRequest request,Model model) 
+	{
+		ProductService ps=sqlSession.getMapper(ProductService.class);		
+		ArrayList<ProductDTO>list=ps.creepproductout();
+		model.addAttribute("list",list);
+		
+		return "creepproductmain";
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 	}
 	
 }

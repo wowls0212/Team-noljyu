@@ -17,7 +17,11 @@ transform:scale(2,2);
 </head>
 <body>
 <form action="scearch2">
+<<<<<<< HEAD
 <table border="3" width="450px" align="center">
+=======
+<table border="3" width="600px" align="center">
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 <caption>검색창</caption>
     <tr>
       <th>검색 유형</th>
@@ -28,6 +32,10 @@ transform:scale(2,2);
         <label><input type="radio" name="cate" value="phone">연락처</label>
         <label><input type="radio" name="cate" value="nickname">닉네임</label>
         <label><input type="radio" name="cate" value="myanimal">반려동물</label>
+<<<<<<< HEAD
+=======
+        <label><input type="radio" name="cate" value="admin">회원등급</label>
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
       </td>
     </tr>
     <tr>

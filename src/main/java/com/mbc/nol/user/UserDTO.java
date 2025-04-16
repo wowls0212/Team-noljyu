@@ -16,7 +16,10 @@ public void setAdmin(String admin) {
 
 public UserDTO(String id, String pw, String name, String address, String phone, String nickname, String myanimal,
 		String admin) {
+<<<<<<< HEAD
 	super();
+=======
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 	this.id = id;
 	this.pw = pw;
 	this.name = name;

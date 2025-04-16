@@ -95,7 +95,11 @@ public class ComController {
 		String posttype=request.getParameter("posttype");
 		ComService cs = sqlsession.getMapper(ComService.class);
 		cs.comreview(comnum, id, review, posttype);
+<<<<<<< HEAD
 		return "redirect:/comdetail?postnum="+comnum;
+=======
+		return "redirect:/comdetaul?postnum="+comnum;
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 	}
 	
 	@RequestMapping(value = "comrere")
@@ -114,7 +118,11 @@ public class ComController {
 	public String hh7(int reviewnum, String review, HttpServletRequest request) {
 		ComService cs = sqlsession.getMapper(ComService.class);
 		//±‚¡∏ ¥Ò±€¿« ¡§∫∏∏¶ ∞°¡Æø»
+<<<<<<< HEAD
 		ComReviewDTO dto = cs.comrereout(reviewnum);
+=======
+		ComReviewDTO dto = cs.rereout(reviewnum);
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 		
 		//±‚¡∏ ¥Ò±€¿« hownum, id, groups, step, indent ∞°¡Æø»
 		int comnum=dto.getPostnum();
@@ -130,7 +138,11 @@ public class ComController {
 		cs.comreinsert(comnum,id,review,groups,step,indent,posttype);
 		
 		//¥Î¥Ò±€ »Æ¿Œ
+<<<<<<< HEAD
 		int check = cs.comrerecheck(review);
+=======
+		int check = cs.rerecheck(review);
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 		System.out.println(check);
 		return Integer.toString(check);
 	}
@@ -172,7 +184,11 @@ public class ComController {
 	}
 	
 	@ResponseBody
+<<<<<<< HEAD
 	@RequestMapping(value = "/compostdelete")
+=======
+	@RequestMapping(value = "/comdelete")
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 	public String comdelete(int comnum, HttpServletResponse response, HttpServletRequest request) {
 		ComService cs = sqlsession.getMapper(ComService.class);
 		cs.comdelete(comnum);

@@ -11,6 +11,10 @@ caption
 th,td
 {
 	text-align:center;
+<<<<<<< HEAD
+=======
+	font-size: 1.2em
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 }
 </style>
 <meta charset="UTF-8">

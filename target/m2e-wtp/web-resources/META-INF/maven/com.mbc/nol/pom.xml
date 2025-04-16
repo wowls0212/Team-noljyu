@@ -56,6 +56,14 @@
 		</dependency>
 		
 		<!-- tiles 시작 -->
+<<<<<<< HEAD
+=======
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20210307</version>
+</dependency>
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 		
 		<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-core -->
 <dependency>

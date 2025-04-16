@@ -10,7 +10,10 @@
 		<config>src/main/resources/tiles/sample.xml</config>
 		<config>src/main/java/com/mbc/nol/how/how.xml</config>
 		<config>src/main/java/com/mbc/nol/flea/flea.xml</config>
+<<<<<<< HEAD
 		<config>src/main/java/com/mbc/nol/report/report.xml</config>
+=======
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>

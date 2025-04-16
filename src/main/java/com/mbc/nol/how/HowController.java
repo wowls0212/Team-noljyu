@@ -18,8 +18,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+<<<<<<< HEAD
 import com.mbc.nol.report.ReportService;
 
+=======
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 @Controller
 public class HowController {
 
@@ -87,7 +90,11 @@ public class HowController {
 		HowService hs = sqlsession.getMapper(HowService.class);
 		
 		//전체 레코드 수 구하기
+<<<<<<< HEAD
 		int total=hs.howreviewtotal(hownum);
+=======
+		int total=hs.howreviewtotal();
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 		System.out.println(total);
 		if(nowPage==null && cntPerPage == null) {
            nowPage="1";
@@ -252,6 +259,7 @@ public class HowController {
 			else bigo = "fail";
 			return bigo;
 		}
+<<<<<<< HEAD
 		
 		@RequestMapping(value = "postreport1")
 		public String report(HttpServletRequest request, Model model) {
@@ -294,4 +302,6 @@ public class HowController {
 			return "redirect:/main";
 		}
 		
+=======
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 }

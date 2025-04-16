@@ -2,6 +2,10 @@
 <!DOCTYPE tiles-definitions PUBLIC
 "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
 "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 <tiles-definitions>
    <definition name="baseLayout" template="/WEB-INF/views/layout.jsp">
       <put-attribute name="title" value=""/>
@@ -9,12 +13,17 @@
       <put-attribute name="body" value=""/>
       <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
    </definition>
+<<<<<<< HEAD
+=======
+   
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
    <!-- 메인화면 -->
    <definition name="main" extends="baseLayout">
       <put-attribute name="title" value="메인화면"/>
       <put-attribute name="body" value="/WEB-INF/views/main.jsp"/>
    </definition>
    
+<<<<<<< HEAD
    <!-- 신고 -->
 	<definition name="postreport" template="/WEB-INF/views/report/postreport.jsp">
       <put-attribute name="title" value="메인화면"/>
@@ -39,6 +48,8 @@
       <put-attribute name="body" value="/WEB-INF/views/report/reviewreportout.jsp"/>
    </definition>   
    
+=======
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
    <!-- 회원가입 -->
    <definition name="userinput" extends="baseLayout">
       <put-attribute name="title" value="메인화면"/>
@@ -85,6 +96,15 @@
       <put-attribute name="body" value="/WEB-INF/views/user/deleteview.jsp"/>
    </definition>
    
+<<<<<<< HEAD
+=======
+    <!-- 수정,탈퇴 2차 비밀번호 확인 -->
+     <definition name="pwcheck" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/user/pwcheck.jsp"/>
+   </definition>
+   
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
    <!-- 상품등록 -->
    <definition name="productinput" extends="baseLayout">
       <put-attribute name="title" value="메인화면"/>
@@ -121,11 +141,46 @@
 	  <put-attribute name="body" value="/WEB-INF/views/product/psearch2.jsp"/>
    </definition>   
      <!--  개 상품자료 전체출력  -->
+<<<<<<< HEAD
    <definition name="dogproduct" extends="baseLayout">
 	  <put-attribute name="title" value="개 상품자료 전체 출력화면"/>
 	  <put-attribute name="body" value="/WEB-INF/views/product/dogproduct.jsp"/>
    </definition> 
    
+=======
+   <definition name="dogproductmain" extends="baseLayout">
+	  <put-attribute name="title" value="개 상품자료 전체 출력화면"/>
+	  <put-attribute name="body" value="/WEB-INF/views/product/dogproductmain.jsp"/>
+   </definition> 
+   
+       <!--  개 장난감&리빙 출력  -->
+   <definition name="dogtoyliving" extends="baseLayout">
+	  <put-attribute name="title" value="개 장난감리빙 출력"/>
+	  <put-attribute name="body" value="/WEB-INF/views/dogproduct/dogtoyliving.jsp"/>
+   </definition> 
+   
+      <!--  고양이 상품자료 전체출력  -->
+   <definition name="catproductmain" extends="baseLayout">
+	  <put-attribute name="title" value="고양이 상품자료 전체 출력화면"/>
+	  <put-attribute name="body" value="/WEB-INF/views/product/catproductmain.jsp"/>
+   </definition>
+      <!--  새 상품자료 전체출력  -->
+   <definition name="birdproductmain" extends="baseLayout">
+	  <put-attribute name="title" value="새 상품자료 전체 출력화면"/>
+	  <put-attribute name="body" value="/WEB-INF/views/product/birdproductmain.jsp"/>
+   </definition> 
+      <!--  물고기 상품자료 전체출력  -->
+   <definition name="fishproductmain" extends="baseLayout">
+	  <put-attribute name="title" value="물고기 상품자료 전체 출력화면"/>
+	  <put-attribute name="body" value="/WEB-INF/views/product/fishproductmain.jsp"/>
+   </definition>
+       <!--  파충류 상품자료 전체출력  -->
+   <definition name="creepproductmain" extends="baseLayout">
+	  <put-attribute name="title" value="파충류 상품자료 전체 출력화면"/>
+	  <put-attribute name="body" value="/WEB-INF/views/product/creepproductmain.jsp"/>
+   </definition>
+      
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
    <!-- 게시물 등록 -->
    <definition name="postinput" extends="baseLayout">
       <put-attribute name="title" value="메인화면"/>
@@ -233,7 +288,12 @@
       <put-attribute name="title" value="메인화면"/>
       <put-attribute name="body" value="/WEB-INF/views/community/comsearch.jsp"/>
    </definition>  
+<<<<<<< HEAD
    
    
+=======
+
+
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
    
 </tiles-definitions>
