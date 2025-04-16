@@ -87,7 +87,7 @@ public class HowController {
 		HowService hs = sqlsession.getMapper(HowService.class);
 		
 		//전체 레코드 수 구하기
-		int total=hs.howreviewtotal();
+		int total=hs.howreviewtotal(hownum);
 		System.out.println(total);
 		if(nowPage==null && cntPerPage == null) {
            nowPage="1";
@@ -257,7 +257,6 @@ public class HowController {
 		public String report(HttpServletRequest request, Model model) {
 			int num = Integer.parseInt(request.getParameter("postnum"));
 			String id = request.getParameter("id");
-			//신고자 아이디 받아야함
 			HowService hs = sqlsession.getMapper(HowService.class);
 			HowDTO dto = hs.postreport(num,id);
 			model.addAttribute("dto", dto);
@@ -266,9 +265,30 @@ public class HowController {
 		
 		@RequestMapping(value = "postreportdel")
 		public String reportsubmit(HttpServletRequest request) {
+			int rpostnum = Integer.parseInt(request.getParameter("num"));
+			System.out.println(rpostnum);
+			HowService hs = sqlsession.getMapper(HowService.class);
+			hs.reportsubmit(rpostnum);
+			return "redirect:/main";
+		}
+		
+		
+		@RequestMapping(value = "reviewreport")
+		public String reviewreport(HttpServletRequest request, Model model) {
+			int num = Integer.parseInt(request.getParameter("reviewnum"));
 			int postnum = Integer.parseInt(request.getParameter("postnum"));
 			HowService hs = sqlsession.getMapper(HowService.class);
-			hs.reportsubmit(postnum);
+			HowReviewDTO dto = hs.reviewreport(num,postnum);
+			model.addAttribute("dto", dto);
+			return "reviewreport";
+		}
+		
+		@RequestMapping(value = "reviewreportdel")
+		public String reportdel(HttpServletRequest request) {
+			int postnum = Integer.parseInt(request.getParameter("postnum"));
+			int reviewnum = Integer.parseInt(request.getParameter("reviewnum"));
+			HowService hs = sqlsession.getMapper(HowService.class);
+			hs.reviewreportdel(postnum, reviewnum);
 			return "redirect:/main";
 		}
 		

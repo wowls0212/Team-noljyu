@@ -9,33 +9,27 @@
 </head>
 <body>
 	
-<form action="postreportdel">
+
 <table border = "3" width="800px" align="center">
 <tr>
 	<th>신고번호</th><th>게시글번호</th><th>작성자</th><th>신고유형</th><th>신고자</th><th>신고사유</th>
 </tr>
-<c:forEach items="${list }" var="re">
+<c:forEach items="${list }" var="rep">
 <tr>
-	<td>${re.postreportnum }<input type="hidden" name="reportpostnum" value="${re.postreportnum }"> </td>
-	<td>${re.postnum }<input type="hidden" name="postnum" value="${re.postnum }"></td>
-	<td>${re.postid }</td>
-	<td>${re.reportreason }</td>
-	<td>${re.reportid}</td>
-	<td>${re.reportdetail}</td>
+	<td>${rep.postreportnum }</td>
+	<td>${rep.postnum}</td>
+	<td>${rep.postid }</td>
+	<td>${rep.reportreason }</td>
+	<td>${rep.reportid}</td>
+	<td>${rep.reportdetail}</td>
 	<td colspan="2">
-	<button type="submit">접수</button>
+	<input type="hidden" name="reportnum" value="${rep.postreportnum }">
+	<button type="button" onclick="location.href='postreportdel?num=${rep.postnum}'">접수</button>
 	<button type="button" onclick="location.href='main'">철회</button>
-	
-	<!-- 
-	클릭하면 신고접수내용이 사라지는 기능 추가
-	한 링크에 두개는 불가능... 
-	-->
-	
-	
 	</td>
 </tr>
 </c:forEach>
 </table>
-</form>	
+
 </body>
 </html>

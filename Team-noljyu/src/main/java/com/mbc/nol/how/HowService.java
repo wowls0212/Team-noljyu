@@ -44,7 +44,7 @@ public interface HowService {
 
 	int howtotal();
 
-	int howreviewtotal();
+	int howreviewtotal(int hownum);
 
 	HowReviewDTO rereout(int reviewnum);
 
@@ -52,6 +52,10 @@ public interface HowService {
 
 	HowDTO postreport(int num, String id);
 
-	void reportsubmit(int postnum);
+	void reportsubmit(int rpostnum);
+
+	HowReviewDTO reviewreport(int num, int postnum);
+
+	void reviewreportdel(int postnum, int reviewnum);
 
 }

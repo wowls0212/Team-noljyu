@@ -12,5 +12,11 @@
 		select * from "postreport"
 	</select>
 	
+	<insert id="resave">
+		insert into "reviewreport" values(rereport_seq.nextval, #{param1},#{param2},#{param3},#{param4},#{param5},#{param6})
+	</insert>
 	
+	<select id="rereportout" resultType="com.mbc.nol.report.ReportDTO">
+		select * from "reviewreport"
+	</select>
 </mapper>

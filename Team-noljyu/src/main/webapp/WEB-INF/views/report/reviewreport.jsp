@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>나랑 같이 놀쥬 :: 게시물신고창</title>
+<title>나랑 같이 놀쥬 :: 게시물 댓글 신고창</title>
 </head>
 <body>
 	
-	<form action="postreportsave">
+	<form action="reviewreportsave">
 	<input type="hidden" name="postnum" value="${dto.postnum }">
+	<input type="hidden" name="postreviewnum" value="${dto.postreviewnum }">
 		<table border="3" width="400px" align="center">
 			<tr>
 				<th>신고대상</th>
@@ -42,12 +43,9 @@
 				</c:when>
 			</c:choose>
 			</tr>
-			<tr>
 			<td colspan="2">
 			<button type="submit">신고하기</button>
 			<button type="button" onclick="window.close();">취소하기</button>
-			</td>
-			</tr>
 		</table>
 	</form> 
 </body>

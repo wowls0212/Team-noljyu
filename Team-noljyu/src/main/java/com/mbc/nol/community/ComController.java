@@ -95,7 +95,7 @@ public class ComController {
 		String posttype=request.getParameter("posttype");
 		ComService cs = sqlsession.getMapper(ComService.class);
 		cs.comreview(comnum, id, review, posttype);
-		return "redirect:/comdetaul?postnum="+comnum;
+		return "redirect:/comdetail?postnum="+comnum;
 	}
 	
 	@RequestMapping(value = "comrere")
@@ -114,7 +114,7 @@ public class ComController {
 	public String hh7(int reviewnum, String review, HttpServletRequest request) {
 		ComService cs = sqlsession.getMapper(ComService.class);
 		//±‚¡∏ ¥Ò±€¿« ¡§∫∏∏¶ ∞°¡Æø»
-		ComReviewDTO dto = cs.rereout(reviewnum);
+		ComReviewDTO dto = cs.comrereout(reviewnum);
 		
 		//±‚¡∏ ¥Ò±€¿« hownum, id, groups, step, indent ∞°¡Æø»
 		int comnum=dto.getPostnum();
@@ -130,7 +130,7 @@ public class ComController {
 		cs.comreinsert(comnum,id,review,groups,step,indent,posttype);
 		
 		//¥Î¥Ò±€ »Æ¿Œ
-		int check = cs.rerecheck(review);
+		int check = cs.comrerecheck(review);
 		System.out.println(check);
 		return Integer.toString(check);
 	}
@@ -172,7 +172,7 @@ public class ComController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/comdelete")
+	@RequestMapping(value = "/compostdelete")
 	public String comdelete(int comnum, HttpServletResponse response, HttpServletRequest request) {
 		ComService cs = sqlsession.getMapper(ComService.class);
 		cs.comdelete(comnum);

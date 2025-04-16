@@ -35,7 +35,7 @@ public interface FleaService {
 
 	int fleatotal();
 
-	int fleareviewtotal();
+	int fleareviewtotal(int fleanum);
 
 	FleaReviewDTO rereout(int reviewnum);
 

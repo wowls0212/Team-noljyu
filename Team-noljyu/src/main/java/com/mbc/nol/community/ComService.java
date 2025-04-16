@@ -38,9 +38,9 @@ public interface ComService {
 
 	int comreviewtotal();
 
-	ComReviewDTO rereout(int reviewnum);
+	ComReviewDTO comrereout(int reviewnum);
 
-	int rerecheck(String review);
+	int comrerecheck(String review);
 
 	void comreviewupdate(int reviewnum, String review);
 

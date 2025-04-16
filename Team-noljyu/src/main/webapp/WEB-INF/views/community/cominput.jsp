@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +15,12 @@
 	<caption>커뮤니티 글 등록</caption>
 	
 	<tr>
+	<c:choose>
+		<c:when test="${loginstate==true }">
 		<th>아이디</th>
-		<td><input type="text" name="id"></td>
+		<td><input type="hidden" name="id" value="${id }"><font>${id}</font></td>
+	</c:when>
+	</c:choose>
 	</tr>
 	
 	<tr>

@@ -2,13 +2,24 @@ package com.mbc.nol.report;
 
 public class ReportDTO {
 	int postreportnum,postnum;
-	String postid,reportreason,reportid,reportdetail;
+	int reviewreportnum,reviewnum;
+	String postid,reportreason,reportid,reportdetail,reviewid;
 	public ReportDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 	
+	public String getReviewid() {
+		return reviewid;
+	}
+
+
+	public void setReviewid(String reviewid) {
+		this.reviewid = reviewid;
+	}
+
+
 	public int getPostreportnum() {
 		return postreportnum;
 	}
@@ -16,6 +27,26 @@ public class ReportDTO {
 
 	public void setPostreportnum(int postreportnum) {
 		this.postreportnum = postreportnum;
+	}
+
+
+	public int getReviewreportnum() {
+		return reviewreportnum;
+	}
+
+
+	public void setReviewreportnum(int reviewreportnum) {
+		this.reviewreportnum = reviewreportnum;
+	}
+
+
+	public int getReviewnum() {
+		return reviewnum;
+	}
+
+
+	public void setReviewnum(int reviewnum) {
+		this.reviewnum = reviewnum;
 	}
 
 

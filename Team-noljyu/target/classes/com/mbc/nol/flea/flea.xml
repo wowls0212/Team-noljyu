@@ -29,7 +29,7 @@
 		select * from (
 			select rownum rn, A.* from (	
 				select * from "postreview" 
-				where "postnum"=#{param1} order by "postgroups" desc, "poststep" asc
+				where "postnum"=#{param1} and "posttype" = 'flea' order by "postgroups" desc, "poststep" asc
 			) A
 		) where rn between #{param2.start} and #{param2.end}
 	</select>
@@ -85,7 +85,7 @@
 	
 	<!-- 댓글 페이징 처리 (전체 레코드 수) -->
 	<select id="fleareviewtotal" resultType="int">
-		select count(*) from "postreview" where "posttype"='flea'
+		select count(*) from "postreview" where "posttype"='flea' and "postnum"=#{param1}
 	</select>
 	
 	<!-- 대댓글 입력 : 기존 정보를 가져옴 -->
@@ -104,17 +104,17 @@
 	</update>
 	
 	<!-- 댓글 수정 ajax 확인 -->
-	<select id="howreviewcheck" resultType="int">
+	<select id="fleareviewcheck" resultType="int">
 		select count(*) from "postreview" where "postreview"=#{param1}
 	</select>
 	
 	<!-- 댓글 삭제 -->
-	<delete id="howreviewdelete">
+	<delete id="fleareviewdelete">
 		delete from "postreview" where "postreviewnum"=#{param1}
 	</delete>
 	
 	<!-- 댓글 삭제 ajax 확인 -->
-	<select id="howreviewdeletecheck" resultType="int">
+	<select id="fleareviewdeletecheck" resultType="int">
 		select count(*) from "postreview" where "postreviewnum"=#{param1}
 	</select>
 	

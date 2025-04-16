@@ -8,19 +8,19 @@
 <script type="text/javascript">
 //게시글 삭제
 $(document).ready(function() {
-    $("#howdelete").click(function() {
-        var hownum = $("#hownum").val();
+    $("#compostdelete").click(function() {
+        var postnum = $("#postnum").val();
         var value = confirm("정말로 삭제하시겠습니까?");
         if (value == true) {
             $.ajax({
                 type: "POST",
-                url: "howdelete",
-                data: { "hownum": hownum },
+                url: "compostdelete",
+                data: { "postnum": postnum },
                 async: true,
                 success: function(bigo) {
                     if (bigo == "success") { 
                         alert("삭제가 완료되었습니다");
-                        let url = 'howdetail?postnum=${dto.postnum}';
+                        let url = 'comdetail?postnum=${dto.postnum}';
                         location.replace(url);
                     } else {
                         alert("정상적으로 처리되지 않았습니다");
@@ -36,18 +36,18 @@ $(document).ready(function() {
 });
 
 // 댓글 수정(DB 저장)
-function reviewRealUpdate(sindex){
+function comreviewRealUpdate(sindex){
     var reviewnum = $('#reviewnum'+sindex).val();
-    var review = $("#reveiwUpdate-content"+sindex).val();
+    var review = $("#comreveiwUpdate-content"+sindex).val();
 
     $.ajax({
-        url : "howreviewupdate",
+        url : "comreviewupdate",
         data : {'reviewnum' : reviewnum, 'review' : review},
         dataType :'text', 
         success : function(data){
             if(data == "1") {
                 alert("댓글이 수정되었습니다");
-                let url = 'howdetail?postnum=${dto.postnum}';
+                let url = 'comdetail?postnum=${dto.postnum}';
                 location.replace(url);
             }
         }
@@ -55,26 +55,26 @@ function reviewRealUpdate(sindex){
 }
 
 // 댓글 수정(댓글 입력 창으로 화면 바뀌기)
-function howreupdate(sindex){
-    $('#howreview2'+sindex).hide();
-    $('#howreview3'+sindex).show();
-    $('#howreupdate-btn'+sindex).hide();
+function comreupdate(sindex){
+    $('#comreview2'+sindex).hide();
+    $('#comreview3'+sindex).show();
+    $('#comreupdate-btn'+sindex).hide();
 }
 
 //댓글 삭제
-function howreviewdelete(sindex) {
+function comreviewdelete(sindex) {
     var reviewnum = $('#reviewnum'+sindex).val();
     var value = confirm("정말로 삭제하시겠습니까?");
     if (value == true) {
 	    $.ajax({
 	        type: "POST",
-	        url: "howreviewdelete",
+	        url: "comreviewdelete",
 	        data: { "reviewnum": reviewnum },
 	        async: true,
 	        success: function(bigo) {
 	            if (bigo == "success") { 
 	                alert("삭제가 완료되었습니다");
-	                let url = 'howdetail?postnum=${dto.postnum}';
+	                let url = 'comdetail?postnum=${dto.postnum}';
 	                location.replace(url);
 	            } else {
 	                alert("정상적으로 처리되지 않았습니다");
@@ -89,23 +89,23 @@ function howreviewdelete(sindex) {
 }
 
 //대댓글 입력(대댓글 입력창 생성)
-function howrere(sindex){
-    $('#howrere2'+sindex).show();
-    $('#howrere-btn'+sindex).hide();
+function comrere(sindex){
+    $('#comrere2'+sindex).show();
+    $('#comrere-btn'+sindex).hide();
 }
 
 //대댓글 저장(DB)
-function rereRealUpdate(sindex){
+function comrereRealUpdate(sindex){
     var reviewnum = $('#reviewnum'+sindex).val();
-    var review = $("#howrere-content"+sindex).val();
+    var review = $("#comrere-content"+sindex).val();
     $.ajax({
-        url : "howreresave",
+        url : "comreresave",
         data : {'reviewnum' : reviewnum, 'review' : review},
         dataType :'text', 
         success : function(data){
             if(data == "1") {
                 alert("댓글이 입력되었습니다");
-                let url = 'howdetail?postnum=${dto.postnum}';
+                let url = 'comdetail?postnum=${dto.postnum}';
                 location.replace(url);
             }
         }
@@ -118,7 +118,7 @@ function rereRealUpdate(sindex){
 </head>
 <body>
 <!-- 게시글 상세페이지 출력 -->
-<input type="hidden" name="hownum" value="${dto.postnum}" id="hownum">
+<input type="hidden" name="postnum" value="${dto.postnum}" id="postnum">
 <table border="1" width="800px" align="center">
 	<tr>
 		<th>아이디</th>
@@ -144,13 +144,18 @@ function rereRealUpdate(sindex){
 		<td colspan="2" style="text-align: center;">
 		<button onclick="location.href='comupdate?comnum=${dto.postnum}'">수정</button>
 		<button id="howdelete">삭제</button>
+		<button onclick="window.open('postreport1?postnum=${dto.postnum}&id=${dto.id }','_blank','width=600px height=500px resizable=no scrollbar=no location=no toolbars=no')">신고</button>
 	</tr>
 </table>
 
 <!-- 댓글 입력창 -->
 <form action="comreviewsave">
 <input type="hidden" value="${dto.postnum}" name="comnum">
-<input type="hidden" value="${dto.id}" name="id">
+<c:choose>
+	<c:when test="${loginstate==true }">
+		<input type="hidden" value="${id }" name="id">
+	</c:when>
+</c:choose>
 <input type="hidden" value="${dto.posttype }" name="posttype">
 <table border="1" align="center" width="800px">
 	<tr>
@@ -179,15 +184,16 @@ function rereRealUpdate(sindex){
 		</c:forEach>${rr.id} 
 		<input type="hidden" value="${rr.postreviewnum}" id="reviewnum${status.index}"></th>
 		<td style="border-left: none; text-align: right;">
-		<a href="#" id="howreupdate-btn${status.index}" onclick="howreupdate(${status.index}); return false;">수정</a>
-		<a href="#" id="howreviewdelete${status.index}" onclick="howreviewdelete(${status.index})">삭제</a>
-		<a href="#" id="howrere-btn${status.index}" onclick="howrere(${status.index}); return false;">댓글</a>
+		<a href="#" id="comreupdate-btn${status.index}" onclick="comreupdate(${status.index}); return false;">수정</a>
+		<a href="#" id="comreviewdelete${status.index}" onclick="comreviewdelete(${status.index})">삭제</a>
+		<a href="#" id="comrere-btn${status.index}" onclick="comrere(${status.index}); return false;">댓글</a>
+		<a href="#" onclick = "window.open('reviewreport?reviewnum=${rr.postreviewnum}&postnum=${rr.postnum }','_blank','width=600px height=500px resizable=no scrollbar=no location=no toolbars=no')">신고</a>
 		<!-- <a href="howrere?reviewnum=${rr.postreviewnum}">댓글</a> -->
 		</td>
 	</tr>
 	
 	<!-- 댓글 보기창 -->
-	<tr id="howreview2${status.index}">
+	<tr id="comreview2${status.index}">
 		<td colspan="2" style="text-align: left;">
 		<c:forEach var="i" begin="0" end="${rr.postindent}">
 			<c:choose>
@@ -204,7 +210,7 @@ function rereRealUpdate(sindex){
 	</tr>
 	
 	<!-- 댓글 수정창 -->
-	<tr id="howreview3${status.index}" style="display: none;">		
+	<tr id="comreview3${status.index}" style="display: none;">		
     	<td colspan="2" style="text-align: left;">
     	<c:forEach var="i" begin="0" end="${rr.postindent}">
 			<c:choose>
@@ -216,13 +222,13 @@ function rereRealUpdate(sindex){
 				</c:when>
 			</c:choose>
 		</c:forEach>
-    	<textarea mexlength="300" id="reveiwUpdate-content${status.index}" class="form-control" rows="2" cols="100" placeholder="댓글을 입력해 주세요">${rr.postreview}</textarea>
-        <a href="" onclick="reviewRealUpdate(${status.index}); return false;" >등록</a>
+    	<textarea mexlength="300" id="comreveiwUpdate-content${status.index}" class="form-control" rows="2" cols="100" placeholder="댓글을 입력해 주세요">${rr.postreview}</textarea>
+        <a href="" onclick="comreviewRealUpdate(${status.index}); return false;" >등록</a>
    		</td>
 	</tr>
 	
 	<!-- 대댓글 입력 -->
-	<tr id="howrere2${status.index}" style="display: none;">		
+	<tr id="comrere2${status.index}" style="display: none;">		
     	<td style="text-align: left;">
     	<c:forEach var="i" begin="0" end="${rr.postindent}">
 			<c:choose>
@@ -234,10 +240,10 @@ function rereRealUpdate(sindex){
 				</c:when>
 			</c:choose>
 		</c:forEach>
-    	<textarea mexlength="300" id="howrere-content${status.index}" class="form-control" rows="2" cols="100" placeholder="댓글을 입력해 주세요"></textarea>
+    	<textarea mexlength="300" id="comrere-content${status.index}" class="form-control" rows="2" cols="100" placeholder="댓글을 입력해 주세요"></textarea>
         </td>
         <td>
-        	<a href="" onclick="rereRealUpdate(${status.index}); return false;">등록</a>
+        	<a href="" onclick="comrereRealUpdate(${status.index}); return false;">등록</a>
    		</td>
 	</tr>
 	
@@ -247,7 +253,7 @@ function rereRealUpdate(sindex){
 	<tr style="border-left: none;border-right: none;border-bottom: none">
 		<td colspan="8" style="text-align: center;">
 		<c:if test="${paging.startPage!=1 }">
-		   <a href="comdetail?comnum=${dto.postnum}&nowPage=${paging.startPage-1}&cntPerPage=${paging.cntPerPage}"></a>
+		   <a href="comdetail?postnum=${dto.postnum}&nowPage=${paging.startPage-1}&cntPerPage=${paging.cntPerPage}"></a>
 		</c:if>   
 		
 		<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p"> 
@@ -256,13 +262,13 @@ function rereRealUpdate(sindex){
 		         <b><span style="color: red;">${p}</span></b>
 		      </c:when>   
 		      <c:when test="${p != paging.nowPage}">
-		         <a href="comdetail?comnum=${dto.postnum}&nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a>
+		         <a href="comdetail?postnum=${dto.postnum}&nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a>
 		      </c:when>   
 		   </c:choose>
 		</c:forEach>      
 		
 		<c:if test="${paging.endPage != paging.lastPage}">
-			<a href="cometail?comnum=${dto.postnum}&nowPage=${paging.endPage+1}&cntPerPage=${paging.cntPerPage }">  </a>
+			<a href="cometail?postnum=${dto.postnum}&nowPage=${paging.endPage+1}&cntPerPage=${paging.cntPerPage }">  </a>
 		</c:if>   
 	   </td>
 	</tr>

@@ -34,8 +34,8 @@
 	<select id="howreviewout" resultType="com.mbc.nol.how.HowReviewDTO">
 		select * from (
 			select rownum rn, A.* from (	
-				select * from "postreview" 
-				where "postnum"=#{param1} order by "postgroups" desc, "poststep" asc
+				select * from "postreview"
+				where "postnum"=#{param1} and "posttype"='knowhow' order by "postgroups" desc, "poststep" asc
 			) A
 		) where rn between #{param2.start} and #{param2.end}
 	</select>
@@ -101,7 +101,7 @@
 	
 	<!-- 댓글 수정 ajax 확인 -->
 	<select id="howreviewcheck" resultType="int">
-		select count(*) from "postreview" where "postreview"=#{param1}
+		select count(*) from "postreview" where "postreview"=#{param1} 
 	</select>
 	
 	<!-- 댓글 삭제 -->
@@ -121,7 +121,7 @@
 	
 	<!-- 댓글 페이징 처리 (전체 레코드 수) -->
 	<select id="howreviewtotal" resultType="int">
-		select count(*) from "postreview" where "posttype"='knowhow'
+		select count(*) from "postreview" where "posttype"='knowhow' and "postnum"=#{param1}
 	</select>
 	
 	<!-- 대댓글 입력 : 기존 정보를 가져옴 -->
@@ -141,8 +141,16 @@
 	
 	<!-- 신고 접수 -->
 	<delete id="reportsubmit">
-		delete from "post" where "postnum" = #{param1}
+		delete from "post" where "postnum"=#{param1}
 	</delete>
 	
+	<!-- 댓글 신고 -->
+	<select id="reviewreport" resultType="com.mbc.nol.how.HowReviewDTO">
+		select * from "postreview" where "postreviewnum"=#{param1} and "postnum"=#{param2}
+	</select>
+	
+	<delete id="reviewreportdel">
+		delete from "postreview" where "postnum"=#{param1} and "postreviewnum"=#{param2}
+	</delete>
 	
 </mapper>

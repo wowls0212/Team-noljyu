@@ -12,4 +12,8 @@ public interface ReportService {
 
 	void redel(int reportnum);
 
+	void resave(int postnum, int reviewnum, String id, String reason, String detail, String reportid);
+
+	ArrayList<ReportDTO> rereportout();
+
 }

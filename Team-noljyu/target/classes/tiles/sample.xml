@@ -25,7 +25,19 @@
 	<definition name="reportout" extends="baseLayout">
       <put-attribute name="title" value="메인화면"/>
       <put-attribute name="body" value="/WEB-INF/views/report/reportout.jsp"/>
-   </definition>    
+   </definition>  
+   
+   <!-- 댓글신고 -->
+	<definition name="reviewreport" template="/WEB-INF/views/report/reviewreport.jsp">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/report/reviewreport.jsp"/>
+   </definition>  
+   
+   <!-- 댓글신고 접수내역 -->
+	<definition name="reviewreportout" extends="baseLayout">
+      <put-attribute name="title" value="메인화면"/>
+      <put-attribute name="body" value="/WEB-INF/views/report/reviewreportout.jsp"/>
+   </definition>   
    
    <!-- 회원가입 -->
    <definition name="userinput" extends="baseLayout">
