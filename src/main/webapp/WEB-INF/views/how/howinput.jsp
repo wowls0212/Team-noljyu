@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+=======
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,8 +17,17 @@
 	<caption>나만의 노하우 글 등록</caption>
 	
 	<tr>
+<<<<<<< HEAD
+	<c:choose>
+	<c:when test="${loginstate==true }">
+		<th>아이디</th>
+		<td><input type="hidden" name="id" value="${id }"><font>${id}</font></td>
+	</c:when>
+	</c:choose>
+=======
 		<th>아이디</th>
 		<td><input type="text" name="id"></td>
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 	</tr>
 	
 	<tr>

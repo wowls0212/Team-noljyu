@@ -61,6 +61,16 @@ font-style: italic;
           <li><a href="postout">게시물 조회</a></li>
         </ul>
       </li>
+<<<<<<< HEAD
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">신고 관리 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="postreportout">게시물 신고</a></li>
+          <li><a href="reviewreportout">게시물 리뷰 신고</a></li>
+          <li><a href="productreportout">상품리뷰 신고</a></li>
+        </ul>
+      </li>
+=======
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
       
     </ul>
         <ul class="nav navbar-nav navbar-right">

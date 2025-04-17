@@ -9,6 +9,11 @@ table
 	margin-top: 50px;
 	margin-bottom: 350px;
 }
+<<<<<<< HEAD
+th,td
+{
+	text-align:center;
+=======
 caption
 {
 	text-align:center;
@@ -17,6 +22,7 @@ th,td
 {
 	text-align:center;
 	font-size:1.2em;
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 }
 </style>
 <meta charset="UTF-8">

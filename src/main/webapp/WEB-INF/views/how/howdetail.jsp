@@ -144,13 +144,25 @@ function rereRealUpdate(sindex){
 		<td colspan="2" style="text-align: center;">
 		<button onclick="location.href='howupdate?hownum=${dto.postnum}'">수정</button>
 		<button id="howdelete">삭제</button>
+<<<<<<< HEAD
+		<button onclick="window.open('postreport1?postnum=${dto.postnum}&id=${dto.id }','_blank','width=600px height=500px resizable=no scrollbar=no location=no toolbars=no')">신고</button>
+=======
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 	</tr>
 </table>
 
 <!-- 댓글 입력창 -->
 <form action="howreviewsave">
 <input type="hidden" value="${dto.postnum}" name="hownum">
+<<<<<<< HEAD
+<c:choose>
+	<c:when test="${loginstate==true }">
+		<input type="hidden" value="${id }" name="id">
+	</c:when>
+</c:choose>
+=======
 <input type="hidden" value="${dto.id}" name="id">
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 <input type="hidden" value="${dto.posttype }" name="posttype">
 <table border="1" align="center" width="800px">
 	<tr>
@@ -182,6 +194,11 @@ function rereRealUpdate(sindex){
 		<a href="#" id="howreupdate-btn${status.index}" onclick="howreupdate(${status.index}); return false;">수정</a>
 		<a href="#" id="howreviewdelete${status.index}" onclick="howreviewdelete(${status.index})">삭제</a>
 		<a href="#" id="howrere-btn${status.index}" onclick="howrere(${status.index}); return false;">댓글</a>
+<<<<<<< HEAD
+		<a href="#" onclick = "window.open('reviewreport?reviewnum=${rr.postreviewnum}&postnum=${rr.postnum }','_blank','width=600px height=500px resizable=no scrollbar=no location=no toolbars=no')">신고</a>
+		<!-- postreport 주소 바꾸기 / postnum = postreportnum으로 변경하기 -->
+=======
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 		<!-- <a href="howrere?reviewnum=${rr.postreviewnum}">댓글</a> -->
 		</td>
 	</tr>
@@ -247,7 +264,11 @@ function rereRealUpdate(sindex){
 	<tr style="border-left: none;border-right: none;border-bottom: none">
 		<td colspan="8" style="text-align: center;">
 		<c:if test="${paging.startPage!=1 }">
+<<<<<<< HEAD
+		   <a href="howdetail?postnum=${dto.postnum}&nowPage=${paging.startPage-1}&cntPerPage=${paging.cntPerPage}"></a>
+=======
 		   <a href="howdetail?hownum=${dto.postnum}&nowPage=${paging.startPage-1}&cntPerPage=${paging.cntPerPage}"></a>
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 		</c:if>   
 		
 		<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p"> 
@@ -256,13 +277,21 @@ function rereRealUpdate(sindex){
 		         <b><span style="color: red;">${p}</span></b>
 		      </c:when>   
 		      <c:when test="${p != paging.nowPage}">
+<<<<<<< HEAD
+		         <a href="howdetail?postnum=${dto.postnum}&nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a>
+=======
 		         <a href="howdetail?hownum=${dto.postnum}&nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a>
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 		      </c:when>   
 		   </c:choose>
 		</c:forEach>      
 		
 		<c:if test="${paging.endPage != paging.lastPage}">
+<<<<<<< HEAD
+			<a href="howdetail?postnum=${dto.postnum}&nowPage=${paging.endPage+1}&cntPerPage=${paging.cntPerPage }">  </a>
+=======
 			<a href="howdetail?hownum=${dto.postnum}&nowPage=${paging.endPage+1}&cntPerPage=${paging.cntPerPage }">  </a>
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 		</c:if>   
 	   </td>
 	</tr>

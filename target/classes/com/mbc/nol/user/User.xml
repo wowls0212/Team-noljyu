@@ -5,8 +5,12 @@
 
 <mapper namespace="com.mbc.nol.user.UserService">
 	<select id="idcount" resultType="int">
+<<<<<<< HEAD
+		select count(*) from "User" where "id"=#{param1}
+=======
 		select count(*) from "User"
 		where "id"=#{param1}
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 	</select>
 
 	<insert id="insertq">
@@ -18,6 +22,29 @@
 		select*from "User"
 	</select>
 
+<<<<<<< HEAD
+	<select id="scearcha" resultType="com.mbc.nol.user.UserDTO">
+		select "id","name","address","phone","nickname","myanimal"
+		from "User"
+		<where>
+			<choose>
+				<when test="cate == 'id'">"id" like '%' || #{scearch} || '%'</when>
+				<when test="cate == 'name'">"name" like '%' || #{scearch} || '%'</when>
+				<when test="cate == 'address'">"address" like '%' || #{scearch} || '%'</when>
+				<when test="cate == 'phone'">"phone" like '%' || #{scearch} || '%'</when>
+				<when test="cate == 'nickname'">"nickname" like '%' || #{scearch} || '%'</when>
+				<when test="cate == 'myanimal'">"myanimal" like '%' || #{scearch} || '%'</when>
+			</choose>
+		</where>
+	</select>
+
+	<select id="getuser" resultType="com.mbc.nol.user.UserDTO">
+		select * from "User" where "id" = #{param1}
+	</select>
+
+	<select id="modify1" resultType="com.mbc.nol.user.UserDTO">
+		select * from "User" where "id"=#{param1}
+=======
 	<select id="searcha" resultType="com.mbc.nol.user.UserDTO">
 	select "id", "name", "address", "phone", "nickname", "myanimal", "ADMIN"
 	from "User"
@@ -43,19 +70,46 @@
 	<select id="modify1" resultType="com.mbc.nol.user.UserDTO">
 		select * from "User" where
 		"id"=#{param1}
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 	</select>
 
 	<update id="modify2">
 		update "User"
+<<<<<<< HEAD
+		set "pw"=#{param2}, "name"=#{param3}, "address"=#{param4},
+		"phone"=#{param5}, "nickname"=#{param6}, "myanimal"=#{param7}
+=======
 		set "pw"=#{param2}, "name"=#{param3},
 		"address"=#{param4},
 		"phone"=#{param5}, "nickname"=#{param6},
 		"myanimal"=#{param7}
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 		where "id"=#{param1}
 	</update>
 
 
 	<select id="delete1" resultType="com.mbc.nol.user.UserDTO">
+<<<<<<< HEAD
+		select*from "User" where "id"=#{param1, jdbcType=VARCHAR}
+	</select>
+
+	<delete id="delete2">
+		delete from "User" where "id"=#{param1, jdbcType=VARCHAR}
+	</delete>
+
+	<select id="getAdminPassword" resultType="String">
+		SELECT admin_pass
+		FROM AdminPassword
+		WHERE ROWNUM = 1
+	</select>
+
+
+</mapper>
+
+
+
+
+=======
 		select*from "User" where
 		"id"=#{param1, jdbcType=VARCHAR}
 	</select>
@@ -75,3 +129,4 @@
 		SELECT COUNT(*) FROM "User" WHERE "nickname" = #{param1}
 	</select>
 </mapper>
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86

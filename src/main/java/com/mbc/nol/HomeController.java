@@ -13,7 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+<<<<<<< HEAD
+=======
 import org.springframework.web.servlet.ModelAndView;
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 
 @Controller
 public class HomeController {
@@ -25,6 +28,15 @@ public class HomeController {
 
 		return "main";
 	}
+<<<<<<< HEAD
+	
+	@RequestMapping(value = "/main")
+	public String main() {
+		
+		return "main";
+	}
+	
+=======
 
 	@RequestMapping(value = "/main")
 	public ModelAndView main(HttpSession session) {
@@ -40,4 +52,5 @@ public class HomeController {
 		return mav;
 	}
 
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 }

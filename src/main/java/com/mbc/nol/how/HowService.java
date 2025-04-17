@@ -44,10 +44,25 @@ public interface HowService {
 
 	int howtotal();
 
+<<<<<<< HEAD
+	int howreviewtotal(int hownum);
+=======
 	int howreviewtotal();
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 
 	HowReviewDTO rereout(int reviewnum);
 
 	int rerecheck(String review);
 
+<<<<<<< HEAD
+	HowDTO postreport(int num, String id);
+
+	void reportsubmit(int rpostnum);
+
+	HowReviewDTO reviewreport(int num, int postnum);
+
+	void reviewreportdel(int postnum);
+
+=======
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 }

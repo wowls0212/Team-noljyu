@@ -38,9 +38,15 @@ public interface ComService {
 
 	int comreviewtotal();
 
+<<<<<<< HEAD
+	ComReviewDTO comrereout(int reviewnum);
+
+	int comrerecheck(String review);
+=======
 	ComReviewDTO rereout(int reviewnum);
 
 	int rerecheck(String review);
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 
 	void comreviewupdate(int reviewnum, String review);
 

@@ -18,6 +18,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+<<<<<<< HEAD
+import com.mbc.nol.report.ReportService;
+
+=======
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 @Controller
 public class HowController {
 
@@ -85,7 +90,11 @@ public class HowController {
 		HowService hs = sqlsession.getMapper(HowService.class);
 		
 		//전체 레코드 수 구하기
+<<<<<<< HEAD
+		int total=hs.howreviewtotal(hownum);
+=======
 		int total=hs.howreviewtotal();
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 		System.out.println(total);
 		if(nowPage==null && cntPerPage == null) {
            nowPage="1";
@@ -250,4 +259,49 @@ public class HowController {
 			else bigo = "fail";
 			return bigo;
 		}
+<<<<<<< HEAD
+		
+		@RequestMapping(value = "postreport1")
+		public String report(HttpServletRequest request, Model model) {
+			int num = Integer.parseInt(request.getParameter("postnum"));
+			String id = request.getParameter("id");
+			HowService hs = sqlsession.getMapper(HowService.class);
+			HowDTO dto = hs.postreport(num,id);
+			model.addAttribute("dto", dto);
+			return "postreport";
+		}
+		
+		@RequestMapping(value = "postreportdel")
+		public String reportsubmit(HttpServletRequest request) {
+			int rpostnum = Integer.parseInt(request.getParameter("num"));
+			System.out.println(rpostnum);
+			HowService hs = sqlsession.getMapper(HowService.class);
+			hs.reportsubmit(rpostnum);
+			return "redirect:/main";
+		}
+		
+		
+		@RequestMapping(value = "reviewreport")
+		public String reviewreport(HttpServletRequest request, Model model) {
+			int num = Integer.parseInt(request.getParameter("reviewnum"));
+			int postnum = Integer.parseInt(request.getParameter("postnum"));
+			HowService hs = sqlsession.getMapper(HowService.class);
+			HowReviewDTO dto = hs.reviewreport(num,postnum);
+			model.addAttribute("dto", dto);
+			return "reviewreport";
+		}
+		
+		@RequestMapping(value = "reviewreportdel")
+		public String reportdel(HttpServletRequest request) {
+			int postnum = Integer.parseInt(request.getParameter("postnum"));
+			int reviewnum = Integer.parseInt(request.getParameter("reviewnum"));
+			System.out.println(postnum);
+			System.out.println(reviewnum);
+			HowService hs = sqlsession.getMapper(HowService.class);
+			hs.reviewreportdel(reviewnum);
+			return "redirect:/main";
+		}
+		
+=======
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 }

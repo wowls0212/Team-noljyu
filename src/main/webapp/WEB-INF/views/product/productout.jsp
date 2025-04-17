@@ -11,6 +11,11 @@ table
 	margin-top: 50px;
 	margin-bottom: 350px;
 }
+<<<<<<< HEAD
+th,td
+{
+	text-align:center;
+=======
 caption
 {
 	text-align:center;
@@ -19,12 +24,24 @@ th,td
 {
 	text-align:center;
 	font-size:1.2em;
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 }
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
+<a href="dogproduct"><img alt="" src="./image/2-modified.png" width="200px" height="160px"></a>
+<a href="catproduct"><img alt="" src="./image/cat-modified.png" width="200px" height="160px"></a>
+<a href="birdproduct"><img alt="" src="./image/bird2-modified.png" width="200px" height="160px"></a>
+<a href="fishproduct"><img alt="" src="./image/goldfish-modified.png" width="200px" height="160px"></a>
+<a href="creepingproduct"><img alt="" src="./image/reptile2-modified.png" width="200px" height="160px"></a>
+
+
+
+<table border="3" width="1000px" align="center">
+=======
 	<a href="dogproductmain"><img alt="" src="./image/2-modified.png" width="200px" height="160px"></a>
 	<a href="catproductmain"><img alt="" src="./image/cat-modified.png" width="200px" height="160px"></a>
 	<a href="birdproductmain"><img alt="" src="./image/bird2-modified.png" width="200px" height="160px"></a>
@@ -34,6 +51,7 @@ th,td
 
 
 <table border="3" width="1200px" align="center">
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 <caption></caption>
 	<tr>
 		<th>상품번호</th><th>아이디</th><th>동물구분</th>
@@ -60,7 +78,11 @@ th,td
 			<a href="pmodify1?num=${pro.productnum}">수정</a>
 			<a href="pdelete1?num=${pro.productnum}">삭제</a>
 		</td>	
+<<<<<<< HEAD
+	</tr>	
+=======
 	</tr>		
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 	</c:forEach>		
 </table>
 </body>

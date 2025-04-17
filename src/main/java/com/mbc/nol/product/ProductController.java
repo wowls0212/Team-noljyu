@@ -151,6 +151,16 @@ public class ProductController {
 		return "psearch2";
 	}
 	
+<<<<<<< HEAD
+	@RequestMapping(value = "/dogproduct")
+	public String product11(Model model) 
+	{
+		ProductService ps=sqlSession.getMapper(ProductService.class);
+		ArrayList<ProductDTO>list=ps.productout();
+		model.addAttribute("list",list);
+		
+		return "dogproduct";
+=======
 	@RequestMapping(value = "/dogproductmain")
 	public String product11(HttpServletRequest request,Model model) 
 	{
@@ -209,6 +219,7 @@ public class ProductController {
 		model.addAttribute("list",list);
 		
 		return "creepproductmain";
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 	}
 	
 }

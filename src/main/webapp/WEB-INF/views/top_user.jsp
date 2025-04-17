@@ -18,9 +18,6 @@ height: 400px;
 font-size: 3em;
 font-style: italic;
 }
-
-
-
 </style>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">

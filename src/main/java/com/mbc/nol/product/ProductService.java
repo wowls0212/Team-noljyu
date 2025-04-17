@@ -22,6 +22,9 @@ public interface ProductService {
 
 	ArrayList<ProductDTO> psearch2(String name, String value);
 
+<<<<<<< HEAD
+	ProductDTO dogproduct(int num);
+=======
 	ArrayList<ProductDTO> dogproductout();
 
 	ArrayList<ProductDTO> catproductout();
@@ -35,5 +38,6 @@ public interface ProductService {
 	ArrayList<ProductDTO> dogtoyliving();
 
 	
+>>>>>>> 8546762916583da98135734a1f7933dd5da22e86
 
 }
