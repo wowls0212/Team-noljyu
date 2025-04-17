@@ -101,6 +101,7 @@ public class HowController {
         }
 		pdto = new HowPageDTO(Integer.parseInt(nowPage), total, Integer.parseInt(cntPerPage));
 		HowDTO dto = hs.howdetailout(hownum);
+		hs.howcnt(hownum);
 		model.addAttribute("dto", dto);
 		model.addAttribute("list", hs.howreviewout(hownum,pdto));
 		model.addAttribute("paging", pdto);

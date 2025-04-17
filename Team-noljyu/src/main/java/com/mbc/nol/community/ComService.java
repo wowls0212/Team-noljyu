@@ -50,5 +50,7 @@ public interface ComService {
 
 	int comreviewdeletecheck(int reviewnum);
 
+	void comcnt(int comnum);
+
 	
 }

@@ -80,6 +80,7 @@ public class ComController {
 		}
 		pdto = new ComPageDTO(Integer.parseInt(nowPage), total, Integer.parseInt(cntPerPage));
 		ComDTO dto = cs.comdetail(comnum);
+		cs.comcnt(comnum);
 		model.addAttribute("dto", dto);
 		model.addAttribute("list", cs.comreviewout(comnum,pdto));
 		model.addAttribute("paging", pdto);

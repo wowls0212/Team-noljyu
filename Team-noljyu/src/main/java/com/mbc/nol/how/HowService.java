@@ -58,4 +58,6 @@ public interface HowService {
 
 	void reviewreportdel(int postnum, int reviewnum);
 
+	void howcnt(int hownum);
+
 }

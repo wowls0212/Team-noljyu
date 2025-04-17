@@ -19,6 +19,10 @@
 			) A
 		) where rn between #{start} and #{end}
 	</select>
+	<!-- 조회수 -->
+	<update id="howcnt">
+		update "post" set "postcnt"="postcnt"+1 where "postnum"=#{param1}
+	</update>
 	
 	<!-- 게시글 상세페이지 출력 -->
 	<select id="howdetailout" resultType="com.mbc.nol.how.HowDTO">

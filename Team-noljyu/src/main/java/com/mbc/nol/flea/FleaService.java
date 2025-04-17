@@ -52,4 +52,6 @@ public interface FleaService {
 
 	int fleareviewdeletecheck(int reviewnum);
 
+	void fleacnt(int fleanum);
+
 }

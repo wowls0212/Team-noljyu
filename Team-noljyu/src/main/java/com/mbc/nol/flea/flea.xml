@@ -21,6 +21,12 @@
 		select * from "post" where "postnum"=#{param1}
 	</select>
 	
+	<!-- 조회수 -->
+	<update id="fleacnt">
+		update "post" set "postcnt"="postcnt"+1 where "postnum"=#{param1}
+	</update>
+	
+	
 	<insert id="fleareview">
 		insert into "postreview" values(#{param1}, #{param2}, ppreview_seq.nextval, #{param3}, ppreview_seq.currval, 0, 0,#{param4})
 	</insert>

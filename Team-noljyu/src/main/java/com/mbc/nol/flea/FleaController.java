@@ -100,6 +100,7 @@ public class FleaController {
         }
 		pdto = new FleaPageDTO(Integer.parseInt(nowPage), total, Integer.parseInt(cntPerPage));
 		FleaDTO dto = fs.fleadetailout(fleanum);
+		fs.fleacnt(fleanum);
 		model.addAttribute("dto", dto);
 		model.addAttribute("list", fs.fleareviewout(fleanum,pdto));
 		model.addAttribute("paging", pdto);
