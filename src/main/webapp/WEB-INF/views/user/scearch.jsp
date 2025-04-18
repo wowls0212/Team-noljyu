@@ -28,6 +28,7 @@ transform:scale(2,2);
         <label><input type="radio" name="cate" value="phone">연락처</label>
         <label><input type="radio" name="cate" value="nickname">닉네임</label>
         <label><input type="radio" name="cate" value="myanimal">반려동물</label>
+        <label><input type="radio" name="cate" value="petName">반려동물 이름</label>
         <label><input type="radio" name="cate" value="admin">회원등급</label>
       </td>
     </tr>

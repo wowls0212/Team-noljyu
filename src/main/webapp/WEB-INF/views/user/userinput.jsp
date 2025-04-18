@@ -38,28 +38,12 @@ $(document).ready(function() {
         }
     });
 });
-
 </script>
-
-
-<script>
-$(document).ready(function(){
-    $("select[name='admin']").change(function(){
-        if($(this).val() === "admin") {
-            $("#adminPwRow").show();
-        } else {
-            $("#adminPwRow").hide();
-            $("#adminPass").val(""); // 비우기
-        }
-    });
-});
-</script>
-
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="usersave" method="post">
+	<form action="usersave" method="post" enctype="multipart/form-data">
 		<table border="3" width="450px" align="center">
 			<caption>회원가입</caption>
 
@@ -81,6 +65,12 @@ $(document).ready(function(){
 			</tr>
 
 			<tr>
+				<th>프로필 사진</th>
+				<td style="text-align: right;">
+				<input type="file" name="uploadfile" accept="image/*" style="float: right;" /></td>
+			</tr>
+
+			<tr>
 				<th>아이디</th>
 				<td>
 				<input type="text" name="id" id="id"> 
@@ -90,7 +80,7 @@ $(document).ready(function(){
 
 			<tr>
 				<th>패스워드</th>
-				<td><input type="text" name="pw"></td>
+				<td><input type="password" name="pw"></td>
 			</tr>
 
 			<tr>
@@ -118,10 +108,20 @@ $(document).ready(function(){
 				<input type="button" id="nicknameCheck" value="닉네임 중복확인"></td>
 			</tr>
 
+
 			<tr>
-				<th>나의 반려동물</th>
-				<td><input type="text" name="myanimal"></td>
+				<th>반려동물 종류</th>
+				<td><input type="text" name="myanimal" required></td>
 			</tr>
+			<tr>
+				<th>반려동물 이름</th>
+				<td><input type="text" name="petName" required>
+					<div style="font-size: 0.8em; color: #555;">
+					(비밀번호 찾기 시, 본인 확인용으로 사용됩니다)
+					</div>
+				</td>
+			</tr>
+
 
 			<tr style="text-align: center;">
 				<td colspan="2">
