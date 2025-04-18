@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.mbc.nol.report.ReportService">
+	<insert id="save">
+		insert into "postreport" values(report_seq.nextval ,#{param1}, #{param2}, #{param3}, #{param4}, #{param5})
+	</insert>
+	
+	<select id="postreportout" resultType="com.mbc.nol.report.ReportDTO">
+		select * from "postreport"
+	</select>
+	
+	<insert id="resave">
+		insert into "reviewreport" values(rereport_seq.nextval, #{param1},#{param2},#{param3},#{param4},#{param5},#{param6})
+	</insert>
+	
+	<select id="rereportout" resultType="com.mbc.nol.report.ReportDTO">
+		select * from "reviewreport"
+	</select>
+</mapper>

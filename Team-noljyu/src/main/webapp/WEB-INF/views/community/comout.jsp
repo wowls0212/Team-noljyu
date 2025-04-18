@@ -23,9 +23,6 @@ margin-bottom : 150px;
 	<th><a href="comdetail?postnum=${com.postnum}">${com.posttitle }</a></th>
 </tr>
 <tr>
-	<th>조회수 : ${com.postcnt }</th>
-</tr>
-<tr>
 	<th><img src = "${com.postimg }" width="600px" height="500px"></th>
 </tr>
 <tr>

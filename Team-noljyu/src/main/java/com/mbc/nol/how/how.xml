@@ -19,16 +19,17 @@
 			) A
 		) where rn between #{start} and #{end}
 	</select>
-	<!-- 조회수 -->
-	<update id="howcnt">
-		update "post" set "postcnt"="postcnt"+1 where "postnum"=#{param1}
-	</update>
 	
 	<!-- 게시글 상세페이지 출력 -->
 	<select id="howdetailout" resultType="com.mbc.nol.how.HowDTO">
 		select * from "post" where "postnum"=#{param1} 
 	</select>
 	
+	<!-- 조회수 -->
+	<update id="howcnt">
+		update "post" set "postcnt"="postcnt"+1 where "postnum"=#{param1}
+ 	</update>
+ 	
 	<!-- 댓글 입력 -->
 	<insert id="howreview">
 		insert into "postreview" values(#{param1}, #{param2}, ppreview_seq.nextval, #{param3}, ppreview_seq.currval, 0, 0,#{param4})
