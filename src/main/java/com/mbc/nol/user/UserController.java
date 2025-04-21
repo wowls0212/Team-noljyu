@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -23,6 +24,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.mbc.nol.board.BoardDTO;
+import com.mbc.nol.board.BoardService;
 
 @Controller
 public class UserController {
@@ -169,11 +173,20 @@ public class UserController {
 
 	// 마이페이지
 	@RequestMapping(value = "/mypage")
-	public String myPage(Model model, HttpServletRequest request) {
-		String loginId = request.getParameter("id");
-		UserService us = sqlSession.getMapper(UserService.class);
-		UserDTO myinfo = us.getuser(loginId);
+	public String myPage(Model model, HttpSession session) {
+		String loginId = (String) session.getAttribute("id");
+		if (loginId == null) return "redirect:/login";
+		
+		//내정보
+		UserService us= sqlSession.getMapper(UserService.class);
+		UserDTO myinfo= us.getuser(loginId);
+		
+		// community 테이블에서 내가 쓴 글 조회
+		BoardService bs= sqlSession.getMapper(BoardService.class);
+		List<BoardDTO> myPosts = bs.getpostsByUser(loginId);
+		
 		model.addAttribute("myinfo", myinfo);
+		model.addAttribute("myPosts", myPosts);
 		return "mypageout";
 	}
 

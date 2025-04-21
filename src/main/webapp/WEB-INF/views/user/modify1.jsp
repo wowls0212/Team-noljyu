@@ -13,15 +13,15 @@
 </head>
 <body>
     <form action="modifysave" method="post" enctype="multipart/form-data">
-        <table border="1">
-            <caption><h2>회원정보 수정</h2></caption>
+       <table border="3" width="450px" align="center">
+            <caption>회원정보수정</caption>
             <tr>
                 <th>아이디</th>
                 <td><input type="text" name="id" value="${dto.id}" readonly /></td>
             </tr>
             <tr>
                 <th>새 비밀번호</th>
-                <td><input type="password" name="pw" placeholder="변경 시 입력, 미입력 시 유지"></td>
+                <td><input type="password" name="pw" placeholder="변경시에만 입력하세요."></td>
             </tr>
             <tr>
                 <th>이름</th>
@@ -63,6 +63,7 @@
 				<input type="submit" value="수정">&emsp;
 				<input type="button" value="취소" onclick="location.href='main'">
 			</tr>
+	 </table>
     </form>
 </body>
 </html>
